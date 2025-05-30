@@ -1,8 +1,11 @@
 #root {
-  max-width: 1280px;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .logo {
@@ -39,4 +42,31 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.App {
+  text-align: left;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.page {
+  padding: 2rem 0;
+}
+
+.page h1 {
+  color: #213547;
+  margin-bottom: 1rem;
+}
+
+.page p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Navigation hover effects */
+nav a:hover {
+  color: #535bf2 !important;
+  text-decoration: underline !important;
 }
