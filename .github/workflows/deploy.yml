@@ -44,7 +44,11 @@ jobs:
           cache: "pnpm"
 
       - name: Build
-        run: pnpm build
+        env:
+          VITE_BASE_PATH: ${{ secrets.VITE_BASE_PATH }}
+        run: |
+          pnpm build
+          cp dist/index.html dist/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
