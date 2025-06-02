@@ -1,6 +1,6 @@
 #root {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: left;
@@ -47,8 +47,6 @@
 .App {
   text-align: left;
   min-height: 100vh;
-  background-color: var(--bg-color);
-  color: var(--text-color);
 }
 
 .page {

@@ -20,6 +20,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   useEffect(() => {
 
+    /* const storedMode = sessionStorage.getItem('themeMode');
+    const randomMode: ThemeMode = storedMode ? storedMode as ThemeMode : Math.random() > 0.5 ? 'dark' : 'white'; */
     const randomMode: ThemeMode = Math.random() > 0.5 ? 'dark' : 'white';
     setMode(randomMode);
     sessionStorage.setItem('themeMode', randomMode);

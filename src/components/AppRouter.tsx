@@ -31,28 +31,19 @@ export default function AppRouter() {
     );
   }
 
-  // Redirect root to appropriate home page based on theme
-  const homeRedirect = mode === 'white' ? '/home' : '/dk/home';
-
   return (
     <Routes>
       {/* Root redirect */}
-      <Route path="/" element={<Navigate to={homeRedirect} replace />} />
+      <Route path="/" element={<Navigate to='/home' replace />} />
       
-      {/* White mode routes */}
-      <Route path="/home" element={<Home />} />
-      <Route path="/store" element={<Store />} />
-      <Route path="/history" element={<History />} />
-      <Route path="/stories" element={<Stories />} />
-      
-      {/* Dark mode routes */}
-      <Route path="/dk/home" element={<HomeDark />} />
-      <Route path="/dk/store" element={<StoreDark />} />
-      <Route path="/dk/history" element={<HistoryDark />} />
-      <Route path="/dk/stories" element={<StoriesDark />} />
+      {/* Routes */}
+      <Route path="/home" element={mode === 'white' ? <Home /> : <HomeDark />} />
+      <Route path="/store" element={mode === 'white' ? <Store /> : <StoreDark />} />
+      <Route path="/history" element={mode === 'white' ? <History /> : <HistoryDark />} />
+      <Route path="/stories" element={mode === 'white' ? <Stories /> : <StoriesDark />} />
       
       {/* 404 fallback */}
-      <Route path="*" element={<Navigate to={homeRedirect} replace />} />
+      <Route path="*" element={<Navigate to='/home' replace />} />
     </Routes>
   );
 } 
