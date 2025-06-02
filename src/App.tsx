@@ -26,7 +26,7 @@ function ThemeWrapper() {
   }, [mode]);
 
   return (
-    <Router basename="/id430-speculative-design/">
+    <Router basename={import.meta.env.VITE_BASE_PATH}>
       <div className="App">
         <Navigation />
         <AppRouter />
