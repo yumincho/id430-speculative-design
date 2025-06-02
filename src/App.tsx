@@ -1,10 +1,10 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import { ThemeProvider } from './contexts/ThemeContext';
-import Navigation from './components/Navigation';
-import AppRouter from './components/AppRouter';
-import './App.css';
-import { useTheme } from './contexts/ThemeContext';
-import { useEffect } from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import Navigation from "./components/Navigation";
+import AppRouter from "./components/AppRouter";
+import "./App.css";
+import { useTheme } from "./contexts/ThemeContext";
+import { useEffect } from "react";
 
 // Separate ThemeWrapper to use the theme context
 function ThemeWrapper() {
@@ -14,13 +14,19 @@ function ThemeWrapper() {
   useEffect(() => {
     if (mode) {
       const root = document.documentElement;
-      root.style.setProperty('--bg-color', mode === 'white' ? '#ffffff' : '#121212');
-      root.style.setProperty('--text-color', mode === 'white' ? '#213547' : '#ffffff');
+      root.style.setProperty(
+        "--bg-color",
+        mode === "white" ? "#ffffff" : "#121212"
+      );
+      root.style.setProperty(
+        "--text-color",
+        mode === "white" ? "#213547" : "#ffffff"
+      );
     }
   }, [mode]);
 
   return (
-    <Router>
+    <Router basename="/id430-speculative-design/">
       <div className="App">
         <Navigation />
         <AppRouter />
