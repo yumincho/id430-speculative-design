@@ -44,6 +44,8 @@ jobs:
           cache: "pnpm"
 
       - name: Build
+        env:
+          VITE_BASE_PATH: ${{ secrets.VITE_BASE_PATH }}
         run: pnpm build
 
       - name: Setup Pages
