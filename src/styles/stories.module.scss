@@ -16,6 +16,12 @@
         justify-content: center;
         width: 100%;
         height: 360px;
+        cursor: pointer;
         background: #efefef;
+
+        &__dark {
+            @extend .Story__Container;
+            background: #666;
+        }
     }
 }
