@@ -1,5 +1,6 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { getDarkArticleById } from '../../data/articlesData';
+import Markdown from 'react-markdown';
 
 export default function ArticleDark() {
     const { id } = useParams<{ id: string }>();
@@ -20,9 +21,11 @@ export default function ArticleDark() {
     }
     
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 48px', maxWidth: '680px', margin: '0 auto' }}>
             <h1>{article.title}</h1>
-            <p>{article.content}</p>
+            <img src={article.imageUrl} alt={article.title} style={{ width: '100%', height: '400px', objectFit: 'cover' }}/>
+            <p style={{ fontSize: '14px', color: '#fff' }}>{article.summary}</p>
+            <Markdown>{article.content}</Markdown>
         </div>
     );
 } 

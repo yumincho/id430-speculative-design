@@ -21,7 +21,7 @@ export default function Article() {
     }
     
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0 48px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 48px', maxWidth: '680px', margin: '0 auto' }}>
             <h1>{article.title}</h1>
             <img src={article.imageUrl} alt={article.title} style={{ width: '100%', height: '400px', objectFit: 'cover' }}/>
             <p style={{ fontSize: '14px', color: '#444' }}>{article.summary}</p>

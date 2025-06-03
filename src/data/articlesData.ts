@@ -3,6 +3,8 @@ import article1WhiteContent from '../content/articles/white/article-1.md?raw';
 import article2WhiteContent from '../content/articles/white/article-2.md?raw';
 import article3WhiteContent from '../content/articles/white/article-3.md?raw';
 import article4WhiteContent from '../content/articles/white/article-4.md?raw';
+import article3DarkContent from '../content/articles/dark/article-3.md?raw';
+import article4DarkContent from '../content/articles/dark/article-4.md?raw';
 
 export interface ArticleData {
   id: string;
@@ -75,16 +77,17 @@ export const articlesDarkData: Record<string, ArticleData> = {
     },
     'article-3': {
       id: 'article-3',
-      title: 'The Art of Minimalism',
-      content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+      title: '‘말’을 빌려주는 기술, ‘재갈’이 되다',
+      content: article3DarkContent,
       author: 'Creative Director',
       date: '2024-01-25',
-      excerpt: 'Understanding how less can be more in contemporary design philosophy.'
+      excerpt: 'Understanding how less can be more in contemporary design philosophy.',
+      summary: 'AI 통역기 inTone 없이는 말 한 마디 꺼내지 못하는 사람들이 생겨나고 있다. ‘말을 잘하게 해주는 기술’이 오히려 말하는 능력을 마비시키고, 자기표현에 대한 극단적 불신과 공포를 퍼뜨리고 있는 것이다. 우리는 지금, 유창한 문장의 그림자 뒤에서 말하지 못하는 이들이 조용히 사라지고 있다는 사실을 외면하고 있다.'
     },
     'article-4': {
       id: 'article-4',
-      title: 'Digital Transformation Stories',
-      content: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.',
+      title: '사라진 목소리: 사람을 번역하고 있다는 착각',
+      content: article4DarkContent,
       author: 'Technology Team',
       date: '2024-02-01',
       excerpt: 'Real-world examples of successful digital transformation initiatives.'
