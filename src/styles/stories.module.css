@@ -10,15 +10,38 @@
 .Story__Container, .Story__Container__dark {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   height: 360px;
   cursor: pointer;
   background: #efefef;
+  position: relative;
 }
 .Story__Container__dark {
   background: #666;
+}
+.Story__Image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.Story__Content {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 /*# sourceMappingURL=stories.module.css.map */
