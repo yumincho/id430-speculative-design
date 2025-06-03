@@ -14,7 +14,11 @@ export default function StoriesDark() {
           onClick={() => navigate(`/stories/${article.id}`)}
           className={styles.Story__Container__dark}
         >
-          <h3>{article.title}</h3>
+          <img src={article.imageUrl} alt={article.title} className={styles.Story__Image} />
+          <div className={styles.Story__Content}>
+              <h1>{article.title}</h1>
+              <p style={{ fontSize: '14px', color: '#fff' }}>{article.summary}</p>
+          </div>
         </div>
       ))}
     </div>
