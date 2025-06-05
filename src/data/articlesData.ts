@@ -1,7 +1,9 @@
+import whiteA1Image_1 from "../assets/imgs/w-stories-a1-1.png";
+import whiteA2Image_1 from "../assets/imgs/w-stories-a2-1.png";
 import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
+
 import darkA1Image_1 from "../assets/imgs/d-stories-a1-1.png";
 import darkA1Image_2 from "../assets/imgs/d-stories-a2-1.png";
-import whiteA1Image_1 from "../assets/imgs/w-stories-a1-1.png";
 
 import article3WhiteContent from "../content/articles/white/article-3.md?raw";
 import article4WhiteContent from "../content/articles/white/article-4.md?raw";
@@ -42,6 +44,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     content: article2WhiteContent,
     author: "UX Research",
     date: "2024-01-20",
+    imageUrl: whiteA2Image_1,
     excerpt:
       "How user-centered design principles are shaping the future of digital products.",
   },

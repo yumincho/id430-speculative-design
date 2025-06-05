@@ -1,6 +1,6 @@
 import {
   ArticleWrapper,
-  H1,
+  H2,
   InfoBox,
   Quote,
   Strong,
@@ -11,7 +11,7 @@ export const article2 = (
   <ArticleWrapper>
     <Text>– 초등학교 교실에서 시작된 ‘AI 통역기’ 이야기</Text>
     <Text>
-      싱가포르의 한 primary school 2학년 교실. 교사 리 샤오밍는 아침 조회
+      싱가포르의 한 secondary school 3학년 교실. 교사 리 샤오밍는 아침 조회
       시간마다 아이들과 함께 inTone Edu를 켭니다. 아이들과 함께 하루를 여는 이
       작은 루틴이, 지금 이 교실의 분위기를 바꾸고 있습니다.
     </Text>
@@ -78,7 +78,7 @@ export const article2 = (
       주도성’을 키우는 혁신적인 교육 파트너로 인식하며, 앞으로도 기술과 교육의
       조화로운 접목에 최선을 다하겠다고 전했습니다.
     </Text>
-    <H1>🎓 inTone Edu, 아이들과 함께합니다.</H1>
+    <H2>🎓 inTone Edu, 아이들과 함께합니다.</H2>
 
     <Text>
       <Strong>국제 교육부 및 교육 혁신 기관들</Strong>과 함께하는 inTone Edu는
