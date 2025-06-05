@@ -1,11 +1,11 @@
 import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
-import article2WhiteContent from "../content/articles/white/article-2.md?raw";
 import article3WhiteContent from "../content/articles/white/article-3.md?raw";
 import article4WhiteContent from "../content/articles/white/article-4.md?raw";
 import article3DarkContent from "../content/articles/dark/article-3.md?raw";
 import article4DarkContent from "../content/articles/dark/article-4.md?raw";
 import { article1 as article1WhiteContent } from "../content/articles/white/article-1";
 import { article1 as article1DarkContent } from "../content/articles/dark/article-1";
+import { article2 as article2WhiteContent } from "../content/articles/white/article-2";
 
 export interface ArticleData {
   id: string;
@@ -31,7 +31,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
   },
   "article-2": {
     id: "article-2",
-    title: "Innovation in User Experience",
+    title: "아이들과 더 나은 미래로",
     content: article2WhiteContent,
     author: "UX Research",
     date: "2024-01-20",
