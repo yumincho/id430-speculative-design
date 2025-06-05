@@ -28,6 +28,12 @@ export const Text = styled.div`
   line-height: 1.5;
 `;
 
+export const TextReverse = styled.div`
+  color: ${({ theme }) => theme.textReverse};
+  font-size: 14px;
+  line-height: 1.5;
+`;
+
 export const Strong = styled.strong`
   color: ${({ theme }) => theme.text};
 `;
