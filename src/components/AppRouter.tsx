@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useTheme } from "../contexts/ThemeContext";
 
 // White mode pages
 import Home from "../pages/white/Home";
@@ -13,26 +12,10 @@ import StoreDark from "../pages/dark/Store";
 import HistoryDark from "../pages/dark/History";
 import StoriesDark from "../pages/dark/Stories";
 import Article from "../pages/common/Article";
+import { useTheme, type DefaultTheme } from "styled-components";
 
 export default function AppRouter() {
-  const { mode, isLoading } = useTheme();
-
-  // Show loading state while determining theme
-  if (isLoading) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          fontSize: "1.2rem",
-        }}
-      >
-        Loading...
-      </div>
-    );
-  }
+  const { mode }: DefaultTheme = useTheme();
 
   return (
     <Routes>
@@ -56,7 +39,7 @@ export default function AppRouter() {
         path="/stories"
         element={mode === "white" ? <Stories /> : <StoriesDark />}
       />
-      <Route path="/stories/:id" element={<Article mode={mode ?? "dark"} />} />
+      <Route path="/stories/:id" element={<Article />} />
 
       {/* 404 fallback */}
       <Route path="*" element={<Navigate to="/home" replace />} />

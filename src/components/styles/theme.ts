@@ -1,13 +1,19 @@
-import type { ThemeMode } from "../../contexts/ThemeContext";
+export type ThemeMode = "white" | "dark";
 
-const white = {
-  textColor: "#444",
+export const whiteTheme = {
+  mode: "white" as ThemeMode,
+  text: "#444",
+  quote: "999",
 };
 
-const dark = {
-  textColor: "#fff",
+export const darkTheme = {
+  mode: "dark" as ThemeMode,
+  text: "#fff",
+  quote: "#ccc",
 };
 
 export const getTheme = (mode: ThemeMode) => {
-  return mode === "white" ? white : dark;
+  return mode === "white" ? whiteTheme : darkTheme;
 };
+
+export type ThemeType = typeof whiteTheme;

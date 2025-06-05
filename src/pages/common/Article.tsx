@@ -4,12 +4,11 @@ import {
   getWhiteArticleById,
 } from "../../data/articlesData";
 import Markdown from "react-markdown";
-import { getTheme } from "../../components/styles/theme";
-import type { ThemeMode } from "../../contexts/ThemeContext";
+import { useTheme } from "styled-components";
 
-export default function Article({ mode }: { mode: ThemeMode }) {
-  const isWhiteMode = mode === "white";
-  const theme = getTheme(mode);
+export default function Article() {
+  // const theme = getTheme(mode);
+  const theme = useTheme();
 
   const { id } = useParams<{ id: string }>();
 
@@ -17,9 +16,8 @@ export default function Article({ mode }: { mode: ThemeMode }) {
     return <Navigate to="/stories" replace />;
   }
 
-  const article = isWhiteMode
-    ? getWhiteArticleById(id)
-    : getDarkArticleById(id);
+  const article =
+    theme.mode === "white" ? getWhiteArticleById(id) : getDarkArticleById(id);
 
   if (!article) {
     return (
@@ -54,9 +52,7 @@ export default function Article({ mode }: { mode: ThemeMode }) {
         alt={article.title}
         style={{ width: "100%", height: "400px", objectFit: "cover" }}
       />
-      <p style={{ fontSize: "14px", color: theme.textColor }}>
-        {article.summary}
-      </p>
+      <p style={{ fontSize: "14px", color: theme.text }}>{article.summary}</p>
       {articleContent}
     </div>
   );

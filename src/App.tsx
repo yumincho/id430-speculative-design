@@ -1,15 +1,17 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
 import AppRouter from "./components/AppRouter";
 import "./App.css";
-import { useTheme } from "./contexts/ThemeContext";
 import { useEffect } from "react";
+import { ThemeProvider } from "styled-components";
+import {
+  darkTheme,
+  whiteTheme,
+  type ThemeMode,
+} from "./components/styles/theme";
 
 // Separate ThemeWrapper to use the theme context
-function ThemeWrapper() {
-  const { mode } = useTheme();
-
+function ThemeWrapper({ mode }: { mode: ThemeMode }) {
   // Set CSS variables on document root
   useEffect(() => {
     if (mode) {
@@ -36,9 +38,11 @@ function ThemeWrapper() {
 }
 
 function App() {
+  const mode: ThemeMode = Math.random() > 0.5 ? "dark" : "white";
+
   return (
-    <ThemeProvider>
-      <ThemeWrapper />
+    <ThemeProvider theme={mode === "white" ? whiteTheme : darkTheme}>
+      <ThemeWrapper mode={mode} />
     </ThemeProvider>
   );
 }

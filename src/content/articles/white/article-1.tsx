@@ -1,4 +1,4 @@
-import { Qoute } from "../../../components/article";
+import { Qoute } from "../../../components/common";
 
 export const article1 = (
   <div>
