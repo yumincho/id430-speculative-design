@@ -1,11 +1,94 @@
 import styled from "styled-components";
+import { TypeAnimation } from "react-type-animation";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const footstepData = [
+  {
+    year: "2015",
+    title: "Intone의 시작",
+    description: "인공지능 기반 음성 인식 기술 연구 시작",
+  },
+  {
+    year: "2016",
+    title: "첫 번째 프로토타입",
+    description: "실시간 음성 변환 기술 개발 완료",
+  },
+  {
+    year: "2017",
+    title: "시리즈 A 투자 유치",
+    description: "주요 벤처캐피탈로부터 100억 투자 유치",
+  },
+  {
+    year: "2018",
+    title: "글로벌 진출",
+    description: "미국, 일본, 유럽 시장 진출",
+  },
+  {
+    year: "2019",
+    title: "기술 혁신",
+    description: "자연어 처리 기술 특허 획득",
+  },
+  {
+    year: "2020",
+    title: "시리즈 B 투자",
+    description: "500억 규모 투자 유치",
+  },
+  {
+    year: "2021",
+    title: "글로벌 확장",
+    description: "전 세계 50개국 서비스 제공",
+  },
+  {
+    year: "2022",
+    title: "미래를 향한 도약",
+    description: "차세대 AI 음성 기술 개발 착수",
+  },
+];
 
 export default function History() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="page">
       {/* Intro Section */}
       <Section>
-        <SectionHead>{"신인류의 언어,\nIntone"}</SectionHead>
+        <SectionHead>
+          <TypeAnimation
+            sequence={[
+              1000, // 1 second delay before starting
+              "신인류의 언어,\nIntone",
+              1000,
+            ]}
+            wrapper="div"
+            speed={30}
+            cursor={true}
+            repeat={0}
+          />
+        </SectionHead>
       </Section>
 
       {/* Vision Section */}
@@ -19,7 +102,17 @@ export default function History() {
       <Section>
         <SectionTag>Our Footstep</SectionTag>
         <SectionTitle>우리의 발자취</SectionTitle>
-        <SectionBody>{`지난 10년간 우리는 인공지능과 인간의 소통을 혁신해왔습니다.\n수많은 도전과 성공을 통해 우리는 더 나은 미래를 향해 나아가고 있습니다.`}</SectionBody>
+        <CarouselContainer>
+          <StyledSlider {...settings}>
+            {footstepData.map((item, index) => (
+              <CarouselItem key={index}>
+                <Year>{item.year}</Year>
+                <ItemTitle>{item.title}</ItemTitle>
+                <ItemDescription>{item.description}</ItemDescription>
+              </CarouselItem>
+            ))}
+          </StyledSlider>
+        </CarouselContainer>
       </Section>
 
       {/* Impact Section */}
@@ -60,6 +153,7 @@ const SectionHead = styled.div`
   white-space: pre-wrap;
   line-height: 1.2;
   text-align: center;
+  min-height: 140px; /* Added to prevent layout shift during typing */
 `;
 
 const SectionTitle = styled.div`
@@ -73,4 +167,58 @@ const SectionBody = styled.p`
   white-space: pre-wrap;
   font-weight: 600;
   line-height: 1.5;
+`;
+
+const CarouselContainer = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+`;
+
+const StyledSlider = styled(Slider)`
+  .slick-dots li button:before {
+    color: rgb(255, 90, 0);
+  }
+  .slick-dots li.slick-active button:before {
+    color: rgb(255, 90, 0);
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    color: rgb(255, 90, 0);
+  }
+`;
+
+const CarouselItem = styled.div`
+  padding: 2rem;
+  margin: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  height: 200px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const Year = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+  color: rgb(255, 90, 0);
+  margin-bottom: 0.5rem;
+`;
+
+const ItemTitle = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+`;
+
+const ItemDescription = styled.div`
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
 `;
