@@ -1,4 +1,5 @@
 import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
+import darkA1Image_1 from "../assets/imgs/d-stories-a1-1.png";
 import article3WhiteContent from "../content/articles/white/article-3.md?raw";
 import article4WhiteContent from "../content/articles/white/article-4.md?raw";
 import article3DarkContent from "../content/articles/dark/article-3.md?raw";
@@ -72,6 +73,7 @@ export const articlesDarkData: Record<string, ArticleData> = {
     content: article1DarkContent,
     author: "Design Team",
     date: "2024-01-15",
+    imageUrl: darkA1Image_1,
     excerpt:
       "Exploring innovative approaches to sustainable design in modern web development.",
   },
