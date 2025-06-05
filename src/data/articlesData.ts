@@ -1,5 +1,6 @@
 import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
 import darkA1Image_1 from "../assets/imgs/d-stories-a1-1.png";
+import darkA1Image_2 from "../assets/imgs/d-stories-a2-1.png";
 import article3WhiteContent from "../content/articles/white/article-3.md?raw";
 import article4WhiteContent from "../content/articles/white/article-4.md?raw";
 import article3DarkContent from "../content/articles/dark/article-3.md?raw";
@@ -7,6 +8,7 @@ import article4DarkContent from "../content/articles/dark/article-4.md?raw";
 import { article1 as article1WhiteContent } from "../content/articles/white/article-1";
 import { article1 as article1DarkContent } from "../content/articles/dark/article-1";
 import { article2 as article2WhiteContent } from "../content/articles/white/article-2";
+import { article2 as article2DarkContent } from "../content/articles/dark/article-2";
 
 export interface ArticleData {
   id: string;
@@ -79,11 +81,11 @@ export const articlesDarkData: Record<string, ArticleData> = {
   },
   "article-2": {
     id: "article-2",
-    title: "Innovation in User Experience",
-    content:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    title: "Z사는 당장 AI 통역기 사용을 중단하라",
+    content: article2DarkContent,
     author: "UX Research",
     date: "2024-01-20",
+    imageUrl: darkA1Image_2,
     excerpt:
       "How user-centered design principles are shaping the future of digital products.",
   },
