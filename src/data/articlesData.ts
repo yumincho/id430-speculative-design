@@ -78,7 +78,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
 export const articlesDarkData: Record<string, ArticleData> = {
   "article-1": {
     id: "article-1",
-    title: "아이 말문 막는 부모들을 고발하다",
+    title: "아이 말문 막는 부모들을 고발한다",
     content: article1DarkContent,
     author: "Design Team",
     date: "2024-01-15",
