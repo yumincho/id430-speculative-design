@@ -5,9 +5,9 @@ import {
 } from "../../data/articlesData";
 import Markdown from "react-markdown";
 import { useTheme } from "styled-components";
+import { H1 } from "../../components/common";
 
 export default function Article() {
-  // const theme = getTheme(mode);
   const theme = useTheme();
 
   const { id } = useParams<{ id: string }>();
@@ -42,11 +42,11 @@ export default function Article() {
         flexDirection: "column",
         alignItems: "center",
         padding: "0 48px",
-        maxWidth: "680px",
+        maxWidth: "600px",
         margin: "0 auto",
       }}
     >
-      <h1>{article.title}</h1>
+      <H1>{article.title}</H1>
       <img
         src={article.imageUrl}
         alt={article.title}

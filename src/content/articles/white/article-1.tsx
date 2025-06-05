@@ -1,11 +1,72 @@
-import { Quote } from "../../../components/common";
+import { ArticleWrapper, H2, Quote, Text } from "../../../components/common";
 
 export const article1 = (
-  <div>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat.
-    <Quote>abcde</Quote>
-  </div>
+  <ArticleWrapper>
+    <Text>
+      <i>– 처음 부모가 된, 이정화(32세), 김태훈(35세) 부부의 이야기</i>
+    </Text>
+    <Text>
+      이정화 씨와 김태훈 씨는 다섯 살 아이를 키우는 부모다. 맞벌이에, 부모
+      역할도 처음이다. 아이는 사랑스럽지만, 하루의 끝에는 항상 “말이 통하지
+      않는다”는 좌절이 쌓였다.
+    </Text>
+    <Quote>
+      “하루 종일 직장에서 정신없이 일하다 집에 돌아오면, 아이는 온몸으로
+      ‘놀아줘’ 하고 말하죠. 그런데 그게 ‘사랑받고 싶다’는 신호라는 걸 알면서도,
+      저는 피곤하다는 이유로 자꾸 짜증부터 나오는 거예요.” – 정화 씨
+    </Quote>
+    <Quote>
+      “제가 한 말이 아이한테 상처가 될 수도 있다는 걸, 뒤늦게 아이 얼굴을 보고
+      나서야 알아차려요. ‘왜 그렇게 말했지?’ 하는 자책이 반복되었죠.” – 태훈 씨
+    </Quote>
+    <Text>
+      둘은 자신들의 말이 의도와 다르게 전달되는 순간들이 가정 내 갈등을 키운다고
+      느꼈다. ‘차라리 누가 내 마음을 정리해서 대신 말해주면 좋겠다’는 생각은
+      농담처럼 시작됐지만, 결국 inTone을 찾아 사용하게 된 계기가 됐다.
+    </Text>
+    <H2>“이건 단순한 말투 보정이 아니었어요.”</H2>
+    <Text>
+      정화 씨가 처음 inTone을 쓴 건, 아이가 장난감을 집어던지고 울 때였다.
+      평소처럼 감정을 쏟아내며 말하는 대신, inTone이 정화 씨의 말을 이렇게
+      바꾸어 말해주었다.
+    </Text>
+    <Quote>
+      “지금 엄마는 속상해. 그런데 네가 왜 그런 행동을 했는지 궁금해.”
+      <br /> “다 같이 쓰는 물건은 소중히 다루는 게 좋아. 우리 같이 정리해볼까?”
+    </Quote>
+    <Text>정화 씨는 잠시 멈춰 숨을 고르고, 아이의 반응을 살폈다.</Text>
+    <Quote>
+      “그 순간 아이가 울음을 멈추고 절 봤어요. 내가 짜증을 누르려 애쓴 게
+      아니라, 의도를 정확히 전달했기 때문이겠죠.”
+    </Quote>
+    <Text>
+      그 뒤로 정화, 태훈 씨의 가정에는 평온한 날들이 찾아왔다. inTone에는 정해진
+      매뉴얼이 없다. 감정이 앞서는 말, 생각이 흐트러진 문장, 심지어는
+      중얼거림조차 사용자의 의도와 정서 맥락을 기준으로 다시 언어를 정리한다.
+      태훈 씨는 말한다.
+    </Text>
+    <Quote>
+      “저는 원래 말이 좀 거친 편입니다. 특히 아이가 실수했을 때는, 바로 날선
+      지적부터 나가요. 그런데 이제는 inTone이 대신 다듬어서 아이에게 전달해줘요.
+      그럼 아이도 아는 것 같아요. ‘이건 걱정에서 나온 말이구나’ 하고요."
+    </Quote>
+    <Text>
+      이 부부는 지금도 매일 아침과 저녁, 통역기를 켠다. inTone은 이제 둘
+      사이에도 쓰인다.
+    </Text>
+    <Quote>
+      “서로 지친 상태에서 말하면 괜히 싸우게 되잖아요. inTone이 정리해주는 말을
+      통해, 상대방의 의도를 신중히 듣게 돼요.” – 정화 씨
+    </Quote>
+    <H2>
+      “덜 상처 주는 부모가 되고 싶어요. 그러다보면 언젠가는 완벽한 부모도 될 수
+      있지 않을까요?”
+    </H2>
+    <Text>정화 씨는 마지막에 이렇게 말한다.</Text>
+    <Quote>
+      “우린 갈등이 없는 가족은 아니에요. 다만 감정이 부딪힐 때, 그걸 무너뜨리는
+      말이 아니라 다리를 놓는 말로 만들고 싶어요. 그게 우리가 통역기를 쓰는
+      이유예요.”
+    </Quote>
+  </ArticleWrapper>
 );
