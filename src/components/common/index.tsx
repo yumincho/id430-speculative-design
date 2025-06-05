@@ -12,6 +12,7 @@ export const Quote = styled.blockquote`
   padding-left: 1rem;
   margin: 1rem 0;
   font-style: italic;
+  font-size: 14px;
   color: ${({ theme }) => theme.quote};
 `;
 
