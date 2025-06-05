@@ -35,8 +35,8 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     author: "Design Team",
     date: "2024-01-15",
     imageUrl: whiteA1Image_1,
-    excerpt:
-      "Exploring innovative approaches to sustainable design in modern web development.",
+    summary:
+      "이정화, 김태훈 부부는 매일 아침과 저녁, inTone을 켜고 아이와 대화를 시작한다. 그들은 자신들이 완벽한 부모는 아니라고 말한다. 하지만 감정이 부딪힐 때 무너뜨리는 말 대신 다리를 놓는 말을 건네고 싶다는 마음은 분명하다. 말 한마디가 달라질 때, 가족의 하루도 달라진다. 말로 마음을 전하는 법을 배우고 싶은 모든 부모에게, 이들의 경험은 작지만 강한 희망이 된다.",
   },
   "article-2": {
     id: "article-2",
@@ -47,6 +47,8 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     imageUrl: whiteA2Image_1,
     excerpt:
       "How user-centered design principles are shaping the future of digital products.",
+    summary:
+      "싱가포르의 한 초등학교 2학년 교실. 매일 아침 아이들과 함께 inTone Edu를 켜는 짧은 루틴이 교실을 바꿨다. 아이들은 이제 말을 더 자신 있게, 다정하게, 솔직하게 건넨다. 말 한마디에 담긴 감정이 서로를 향해 다가가게 만들고, 교실의 공기는 어느새 부드럽고 따뜻해졌다. 말하는 법이 달라지자, 함께 사는 방식도 달라지고 있다.",
   },
   "article-3": {
     id: "article-3",
@@ -85,6 +87,8 @@ export const articlesDarkData: Record<string, ArticleData> = {
     imageUrl: darkA1Image_1,
     excerpt:
       "Exploring innovative approaches to sustainable design in modern web development.",
+    summary:
+      "inTone AI 통역기가 아이의 감정을 부드럽게 표현하게 돕는다는 명목 아래, 일부 부모가 자녀의 언어를 직접 통제하는 도구로 쓰고 있다. 아이의 자유로운 의사 표현을 막고, 말을 배우는 과정 대신 검열을 강요하는 셈이다. 개발사는 기능 오용에 대해 책임을 회피하지만, 전문가들은 기술의 중립성 주장은 현실을 외면하는 태도라고 지적한다. 가정 내 권력 불균형 속에서, 기술은 아이를 억압하는 통제 수단으로 전락할 위험이 크다.",
   },
   "article-2": {
     id: "article-2",
@@ -95,6 +99,8 @@ export const articlesDarkData: Record<string, ArticleData> = {
     imageUrl: darkA1Image_2,
     excerpt:
       "How user-centered design principles are shaping the future of digital products.",
+    summary:
+      "다국적 기업 Z사는 ‘건강한 기업문화’ 명목으로 AI 통역기를 도입했지만, 직원 발언을 검열하고 솔직한 의견을 억누르는 감시 도구로 변질됐다. 신입사원 J씨는 통역기 착용을 거부했다가 공개적으로 문제시됐고, 결국 극단적 선택을 했다. 회사는 사건 이후에도 책임을 회피하며 AI 통역기 사용을 강제하고 있다. 기술이 직원 감시와 검열 수단으로 변한 현실을 냉정하게 직시해야 할 때다.",
   },
   "article-3": {
     id: "article-3",
