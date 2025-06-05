@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
 
-type ThemeMode = 'white' | 'dark';
+export type ThemeMode = "white" | "dark";
 
 interface ThemeContextType {
   mode: ThemeMode | null;
@@ -19,13 +19,12 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-
     /* const storedMode = sessionStorage.getItem('themeMode');
     const randomMode: ThemeMode = storedMode ? storedMode as ThemeMode : Math.random() > 0.5 ? 'dark' : 'white'; */
-    const randomMode: ThemeMode = Math.random() > 0.5 ? 'dark' : 'white';
+    const randomMode: ThemeMode = Math.random() > 0.5 ? "dark" : "white";
     setMode(randomMode);
-    sessionStorage.setItem('themeMode', randomMode);
-    
+    sessionStorage.setItem("themeMode", randomMode);
+
     setIsLoading(false);
   }, []);
 
@@ -39,7 +38,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
-} 
+}
