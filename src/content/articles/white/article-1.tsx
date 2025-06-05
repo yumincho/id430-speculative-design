@@ -1,4 +1,4 @@
-import { Qoute } from "../../../components/common";
+import { Quote } from "../../../components/common";
 
 export const article1 = (
   <div>
@@ -6,6 +6,6 @@ export const article1 = (
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
     consequat.
-    <Qoute>abcde</Qoute>
+    <Quote>abcde</Quote>
   </div>
 );
