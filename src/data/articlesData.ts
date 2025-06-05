@@ -1,11 +1,11 @@
 import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
-// import article1WhiteContent from '../content/articles/white/article-1.md?raw';
 import article2WhiteContent from "../content/articles/white/article-2.md?raw";
 import article3WhiteContent from "../content/articles/white/article-3.md?raw";
 import article4WhiteContent from "../content/articles/white/article-4.md?raw";
 import article3DarkContent from "../content/articles/dark/article-3.md?raw";
 import article4DarkContent from "../content/articles/dark/article-4.md?raw";
 import { article1 as article1WhiteContent } from "../content/articles/white/article-1";
+import { article1 as article1DarkContent } from "../content/articles/dark/article-1";
 
 export interface ArticleData {
   id: string;
@@ -69,8 +69,7 @@ export const articlesDarkData: Record<string, ArticleData> = {
   "article-1": {
     id: "article-1",
     title: "The Future of Sustainable Design",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    content: article1DarkContent,
     author: "Design Team",
     date: "2024-01-15",
     excerpt:

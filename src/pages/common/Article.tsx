@@ -7,7 +7,6 @@ import Markdown from "react-markdown";
 import { useTheme } from "styled-components";
 
 export default function Article() {
-  // const theme = getTheme(mode);
   const theme = useTheme();
 
   const { id } = useParams<{ id: string }>();
