@@ -1,10 +1,13 @@
 import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
 import darkA1Image_1 from "../assets/imgs/d-stories-a1-1.png";
 import darkA1Image_2 from "../assets/imgs/d-stories-a2-1.png";
+import whiteA1Image_1 from "../assets/imgs/w-stories-a1-1.png";
+
 import article3WhiteContent from "../content/articles/white/article-3.md?raw";
 import article4WhiteContent from "../content/articles/white/article-4.md?raw";
 import article3DarkContent from "../content/articles/dark/article-3.md?raw";
 import article4DarkContent from "../content/articles/dark/article-4.md?raw";
+
 import { article1 as article1WhiteContent } from "../content/articles/white/article-1";
 import { article1 as article1DarkContent } from "../content/articles/dark/article-1";
 import { article2 as article2WhiteContent } from "../content/articles/white/article-2";
@@ -25,10 +28,11 @@ export interface ArticleData {
 export const articlesWhiteData: Record<string, ArticleData> = {
   "article-1": {
     id: "article-1",
-    title: "The Future of Sustainable Design",
+    title: "마음에 더 가까이 닿을 수 있다면",
     content: article1WhiteContent,
     author: "Design Team",
     date: "2024-01-15",
+    imageUrl: whiteA1Image_1,
     excerpt:
       "Exploring innovative approaches to sustainable design in modern web development.",
   },
