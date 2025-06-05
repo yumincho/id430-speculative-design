@@ -2,18 +2,24 @@ export type ThemeMode = "white" | "dark";
 
 export const whiteTheme = {
   mode: "white" as ThemeMode,
-  text: "#444",
+  text: "#333333",
   textRed: "#d9304c",
-  quote: "999",
+  textReverse: "#ffffff",
+  quote: "#999999",
+  background: "#efefef",
   backgroundSecondary: "#f5f5f5",
+  backgroundReverse: "#000000",
 };
 
 export const darkTheme = {
   mode: "dark" as ThemeMode,
-  text: "#fff",
+  text: "#ffffff",
   textRed: "#ff1744",
-  quote: "#ccc",
+  textReverse: "#000000",
+  quote: "#cccccc",
+  background: "#333333",
   backgroundSecondary: "#0a0a0a",
+  backgroundReverse: "#ffffff",
 };
 
 export const getTheme = (mode: ThemeMode) => {
