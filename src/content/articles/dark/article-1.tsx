@@ -1,4 +1,10 @@
-import { ArticleWrapper, H2, Quote, Text } from "../../../components/common";
+import {
+  ArticleWrapper,
+  H2,
+  Quote,
+  NegativeStrong,
+  Text,
+} from "../../../components/common";
 
 export const article1 = (
   <ArticleWrapper>
@@ -28,8 +34,9 @@ export const article1 = (
       제공되지 않으며, AI는 그 말을 ‘교정할 가치 없음’으로 분류한다. 이
       플러그인은 최근 온라인 커뮤니티 "최고의 아이 만들기"에서 크게 화제가
       되었다. 해당 커뮤니티에서 이 플러그인을 소개한 사람은 "이 플러그인이
-      입시용으로 제격"이라며 부모들에게 추천했다. 플러그인은 단 3일만에 7만 2천
-      건 이상 다운로드되었고, 현재까지도 계속해서 사용자가 늘고 있다.
+      <NegativeStrong> 입시용으로 제격</NegativeStrong>"이라며 부모들에게
+      추천했다. 플러그인은 단 3일만에 7만 2천 건 이상 다운로드되었고, 현재까지도
+      계속해서 사용자가 늘고 있다.
     </Text>
     <H2>“말을 배우는 게 아니라, 검열당하는 겁니다.”</H2>
     <Text>

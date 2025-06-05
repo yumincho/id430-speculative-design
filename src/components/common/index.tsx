@@ -7,6 +7,13 @@ export const ArticleWrapper = styled.div`
   max-width: 600px;
 `;
 
+export const InfoBox = styled.div`
+  background-color: ${({ theme }) => theme.backgroundSecondary};
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  color: ${({ theme }) => theme.text};
+`;
+
 export const Quote = styled.blockquote`
   border-left: 4px solid #ccc;
   padding-left: 1rem;
@@ -20,6 +27,14 @@ export const Text = styled.div`
   color: ${({ theme }) => theme.text};
   font-size: 14px;
   line-height: 1.5;
+`;
+
+export const Strong = styled.strong`
+  color: ${({ theme }) => theme.text};
+`;
+
+export const NegativeStrong = styled.strong`
+  color: ${({ theme }) => theme.textRed};
 `;
 
 export const H1 = styled.h1`
