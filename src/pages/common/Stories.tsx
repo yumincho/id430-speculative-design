@@ -19,6 +19,14 @@ const ArticlePreview = styled.div`
   position: relative;
   padding: 16px;
   box-sizing: border-box;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  &:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const ArticlePreviewImage = styled.img`
