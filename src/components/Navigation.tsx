@@ -18,7 +18,9 @@ const NavList = styled.div`
   padding: 0;
 `;
 
-const NavItem = styled.div``;
+const NavItem = styled.div`
+  cursor: pointer;
+`;
 
 const NavLink = styled(Link)`
   text-decoration: none;
@@ -28,6 +30,8 @@ const NavLink = styled(Link)`
   letter-spacing: 0.01em;
   transition: color 0.18s, border-bottom 0.18s;
   border-bottom: 2px solid transparent;
+  cursor: pointer;
+
   &:hover {
     color: ${({ theme }) => theme.text};
     border-bottom: 1px solid ${({ theme }) => theme.text};
