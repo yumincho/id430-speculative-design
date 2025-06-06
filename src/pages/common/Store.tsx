@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { H3, Text } from "../../components/common";
 import { useState } from "react";
 
@@ -168,8 +168,9 @@ const ProductCardList = styled.div`
   gap: 64px;
 `;
 
-const ProductCard = styled.div`
-  cursor: pointer;
+const ProductCard = styled.div<{ disabled?: boolean }>`
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 
 const TagButton = styled.div<{ selected?: boolean }>`
@@ -194,6 +195,9 @@ const TagList = styled.div`
 function Store() {
   const [selectedTag, setSelectedTag] = useState<Tag>("all");
 
+  const { mode } = useTheme();
+  const isDisabled = mode === "dark";
+
   const filteredProducts = productImageList.filter(
     (product) => selectedTag === "all" || product.tags.includes(selectedTag)
   );
@@ -217,7 +221,7 @@ function Store() {
 
       <ProductCardList>
         {filteredProducts.map((product) => (
-          <ProductCard key={product.name}>
+          <ProductCard key={product.name} disabled={isDisabled}>
             <img src={product.src} alt={product.name} width="200px" />
             <Text>{product.name}</Text>
             <Text>
