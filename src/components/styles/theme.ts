@@ -9,6 +9,7 @@ export const whiteTheme = {
   background: "#efefef",
   backgroundSecondary: "#f5f5f5",
   backgroundReverse: "#000000",
+  border: "#cccccc",
 };
 
 export const darkTheme = {
@@ -20,6 +21,7 @@ export const darkTheme = {
   background: "#333333",
   backgroundSecondary: "#0a0a0a",
   backgroundReverse: "#ffffff",
+  border: "#444444",
 };
 
 export const getTheme = (mode: ThemeMode) => {
