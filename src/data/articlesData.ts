@@ -1,14 +1,17 @@
 import whiteA1Image_1 from "../assets/imgs/w-stories-a1-1.png";
 import whiteA2Image_1 from "../assets/imgs/w-stories-a2-1.png";
 import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
+import whiteA4Image_1 from "../assets/imgs/w-stories-a4-1.png";
 
 import darkA1Image_1 from "../assets/imgs/d-stories-a1-1.png";
 import darkA1Image_2 from "../assets/imgs/d-stories-a2-1.png";
+import darkA3Image_1 from "../assets/imgs/d-stories-a3-1.png";
+import darkA4Image_1 from "../assets/imgs/d-stories-a4-1.png";
 
-import article3WhiteContent from "../content/articles/white/article-3.md?raw";
-import article4WhiteContent from "../content/articles/white/article-4.md?raw";
-import article3DarkContent from "../content/articles/dark/article-3.md?raw";
-import article4DarkContent from "../content/articles/dark/article-4.md?raw";
+import { article3 as article3WhiteContent } from "../content/articles/white/article-3";
+import { article4 as article4WhiteContent } from "../content/articles/white/article-4";
+import { article3 as article3DarkContent } from "../content/articles/dark/article-3";
+import { article4 as article4DarkContent } from "../content/articles/dark/article-4";
 
 import { article1 as article1WhiteContent } from "../content/articles/white/article-1";
 import { article1 as article1DarkContent } from "../content/articles/dark/article-1";
@@ -70,6 +73,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     content: article4WhiteContent,
     author: "Technology Team",
     date: "2024-02-01",
+    imageUrl: whiteA4Image_1,
     excerpt:
       "Real-world examples of successful digital transformation initiatives.",
     summary:
@@ -108,6 +112,7 @@ export const articlesDarkData: Record<string, ArticleData> = {
     content: article3DarkContent,
     author: "Creative Director",
     date: "2024-01-25",
+    imageUrl: darkA3Image_1,
     excerpt:
       "Understanding how less can be more in contemporary design philosophy.",
     summary:
@@ -119,8 +124,10 @@ export const articlesDarkData: Record<string, ArticleData> = {
     content: article4DarkContent,
     author: "Technology Team",
     date: "2024-02-01",
+    imageUrl: darkA4Image_1,
     excerpt:
       "Real-world examples of successful digital transformation initiatives.",
+    summary: "AI 통역기로 정제된 말투, 또렷한 어조. 그런데 이상하다. 모든 게 매끄러운데, 아무도 그의 진심을 알아채지 못했다. DBC <집중취재 7일>은 inTone을 사용하다 사라진 사람들의 공통된 패턴을 추적하며 묻는다. 우리가 듣고 있던 건 정말 ‘사람’이었을까? 감정을 통역하지 못하는 기술이 지운 목소리의 실체가, 드디어 드러난다."
   },
 };
 
