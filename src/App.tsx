@@ -9,6 +9,7 @@ import {
   whiteTheme,
   type ThemeMode,
 } from "./components/styles/theme";
+import Footer from "./components/Footer";
 
 // Separate ThemeWrapper to use the theme context
 function ThemeWrapper({ mode }: { mode: ThemeMode }) {
@@ -32,6 +33,7 @@ function ThemeWrapper({ mode }: { mode: ThemeMode }) {
       <div className="App">
         <Navigation />
         <AppRouter />
+        <Footer />
       </div>
     </Router>
   );
