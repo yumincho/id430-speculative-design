@@ -1,13 +1,3 @@
-import whiteA1Image_1 from "../assets/imgs/w-stories-a1-1.png";
-import whiteA2Image_1 from "../assets/imgs/w-stories-a2-1.png";
-import whiteA3Image_1 from "../assets/imgs/w-stories-a3-1.png";
-import whiteA4Image_1 from "../assets/imgs/w-stories-a4-1.png";
-
-import darkA1Image_1 from "../assets/imgs/d-stories-a1-1.png";
-import darkA1Image_2 from "../assets/imgs/d-stories-a2-1.png";
-import darkA3Image_1 from "../assets/imgs/d-stories-a3-1.png";
-import darkA4Image_1 from "../assets/imgs/d-stories-a4-1.png";
-
 import { article3 as article3WhiteContent } from "../content/articles/white/article-3";
 import { article4 as article4WhiteContent } from "../content/articles/white/article-4";
 import { article3 as article3DarkContent } from "../content/articles/dark/article-3";
@@ -37,7 +27,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     content: article1WhiteContent,
     author: "Design Team",
     date: "2024-01-15",
-    imageUrl: whiteA1Image_1,
+    imageUrl: "./articles/w-stories-a1-1.png",
     summary:
       "이정화, 김태훈 부부는 매일 아침과 저녁, inTone을 켜고 아이와 대화를 시작한다. 그들은 자신들이 완벽한 부모는 아니라고 말한다. 하지만 감정이 부딪힐 때 무너뜨리는 말 대신 다리를 놓는 말을 건네고 싶다는 마음은 분명하다. 말 한마디가 달라질 때, 가족의 하루도 달라진다. 말로 마음을 전하는 법을 배우고 싶은 모든 부모에게, 이들의 경험은 작지만 강한 희망이 된다.",
   },
@@ -47,7 +37,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     content: article2WhiteContent,
     author: "UX Research",
     date: "2024-01-20",
-    imageUrl: whiteA2Image_1,
+    imageUrl: "./articles/w-stories-a2-1.png",
     excerpt:
       "How user-centered design principles are shaping the future of digital products.",
     summary:
@@ -60,7 +50,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     content: article3WhiteContent,
     author: "Creative Director",
     date: "2024-01-25",
-    imageUrl: whiteA3Image_1,
+    imageUrl: "./articles/w-stories-a3-1.png",
     excerpt:
       "Understanding how less can be more in contemporary design philosophy.",
     summary:
@@ -73,7 +63,7 @@ export const articlesWhiteData: Record<string, ArticleData> = {
     content: article4WhiteContent,
     author: "Technology Team",
     date: "2024-02-01",
-    imageUrl: whiteA4Image_1,
+    imageUrl: "./articles/w-stories-a4-1.png",
     excerpt:
       "Real-world examples of successful digital transformation initiatives.",
     summary:
@@ -88,7 +78,7 @@ export const articlesDarkData: Record<string, ArticleData> = {
     content: article1DarkContent,
     author: "Design Team",
     date: "2024-01-15",
-    imageUrl: darkA1Image_1,
+    imageUrl: "./articles/d-stories-a1-1.png",
     excerpt:
       "Exploring innovative approaches to sustainable design in modern web development.",
     summary:
@@ -100,7 +90,7 @@ export const articlesDarkData: Record<string, ArticleData> = {
     content: article2DarkContent,
     author: "UX Research",
     date: "2024-01-20",
-    imageUrl: darkA1Image_2,
+    imageUrl: "./articles/d-stories-a2-1.png",
     excerpt:
       "How user-centered design principles are shaping the future of digital products.",
     summary:
@@ -112,7 +102,7 @@ export const articlesDarkData: Record<string, ArticleData> = {
     content: article3DarkContent,
     author: "Creative Director",
     date: "2024-01-25",
-    imageUrl: darkA3Image_1,
+    imageUrl: "./articles/d-stories-a3-1.png",
     excerpt:
       "Understanding how less can be more in contemporary design philosophy.",
     summary:
@@ -124,10 +114,11 @@ export const articlesDarkData: Record<string, ArticleData> = {
     content: article4DarkContent,
     author: "Technology Team",
     date: "2024-02-01",
-    imageUrl: darkA4Image_1,
+    imageUrl: "./articles/d-stories-a4-1.png",
     excerpt:
       "Real-world examples of successful digital transformation initiatives.",
-    summary: "AI 통역기로 정제된 말투, 또렷한 어조. 그런데 이상하다. 모든 게 매끄러운데, 아무도 그의 진심을 알아채지 못했다. DBC <집중취재 7일>은 inTone을 사용하다 사라진 사람들의 공통된 패턴을 추적하며 묻는다. 우리가 듣고 있던 건 정말 ‘사람’이었을까? 감정을 통역하지 못하는 기술이 지운 목소리의 실체가, 드디어 드러난다."
+    summary:
+      "AI 통역기로 정제된 말투, 또렷한 어조. 그런데 이상하다. 모든 게 매끄러운데, 아무도 그의 진심을 알아채지 못했다. DBC <집중취재 7일>은 inTone을 사용하다 사라진 사람들의 공통된 패턴을 추적하며 묻는다. 우리가 듣고 있던 건 정말 ‘사람’이었을까? 감정을 통역하지 못하는 기술이 지운 목소리의 실체가, 드디어 드러난다.",
   },
 };
 

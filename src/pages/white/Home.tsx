@@ -1,29 +1,30 @@
 import styled from "styled-components";
-import mainTeaser from "../../assets/imgs/w-main-teaser.png";
-import productImg from "../../assets/imgs/w-main-product.png";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useRef } from "react";
 import React, { useState } from "react";
 
+const mainTeaserImageSrc = "./imgs/w-main-teaser.png";
+const productImageSrc = "./imgs/w-main-product.png";
+
 // Manage the image list as a JSON-like array here:
 const identityImageList = [
-  "src/assets/imgs/w-main-identity1.png",
-  "src/assets/imgs/w-main-identity2.png",
-  "src/assets/imgs/w-main-identity3.png",
-  "src/assets/imgs/w-main-identity4.png",
-  "src/assets/imgs/w-main-identity5.png",
-  "src/assets/imgs/w-main-identity6.png",
-  "src/assets/imgs/w-main-identity7.png",
-  "src/assets/imgs/w-main-identity8.png",
-  "src/assets/imgs/w-main-identity1.png",
-  "src/assets/imgs/w-main-identity2.png",
-  "src/assets/imgs/w-main-identity3.png",
-  "src/assets/imgs/w-main-identity4.png",
-  "src/assets/imgs/w-main-identity5.png",
-  "src/assets/imgs/w-main-identity6.png",
-  "src/assets/imgs/w-main-identity7.png",
-  "src/assets/imgs/w-main-identity8.png",
+  "./imgs/w-main-identity1.png",
+  "./imgs/w-main-identity2.png",
+  "./imgs/w-main-identity3.png",
+  "./imgs/w-main-identity4.png",
+  "./imgs/w-main-identity5.png",
+  "./imgs/w-main-identity6.png",
+  "./imgs/w-main-identity7.png",
+  "./imgs/w-main-identity8.png",
+  "./imgs/w-main-identity1.png",
+  "./imgs/w-main-identity2.png",
+  "./imgs/w-main-identity3.png",
+  "./imgs/w-main-identity4.png",
+  "./imgs/w-main-identity5.png",
+  "./imgs/w-main-identity6.png",
+  "./imgs/w-main-identity7.png",
+  "./imgs/w-main-identity8.png",
 ];
 
 const FirstSection = styled.section`
@@ -325,14 +326,14 @@ export default function Home() {
       <FirstSection>
         <ImageWrapper>
           <MainHeadline>inTone</MainHeadline>
-          <MainImage src={mainTeaser} alt="inTone main visual" />
+          <MainImage src={mainTeaserImageSrc} alt="inTone main visual" />
         </ImageWrapper>
         <MainTitle center={true}>
           <SlotLines />
         </MainTitle>
       </FirstSection>
       <ProductSection>
-        <ProductImage src={productImg} alt="inTone product" />
+        <ProductImage src={productImageSrc} alt="inTone product" />
 
         <ProductMessage>
           Start the
@@ -355,7 +356,7 @@ export default function Home() {
         <FeatureContent>
           <img
             style={{ width: "50%", height: "auto", objectFit: "cover" }}
-            src="src/assets/imgs/w-main-feature.png"
+            src="./imgs/w-main-feature.png"
           />
         </FeatureContent>
         <SectionBody>
@@ -426,7 +427,7 @@ export default function Home() {
           }}
         >
           <img
-            src="src/assets/imgs/w-main-style1.png"
+            src="./imgs/w-main-style1.png"
             alt="style1"
             style={{
               width: "30%",
@@ -435,7 +436,7 @@ export default function Home() {
             }}
           />
           <img
-            src="src/assets/imgs/w-main-style2.png"
+            src="./imgs/w-main-style2.png"
             alt="style2"
             style={{
               width: "30%",
