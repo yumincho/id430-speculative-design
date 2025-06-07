@@ -73,7 +73,7 @@ const footstepData = [
 
 const impactCards = [
   {
-    image: "./imgs/w-main-style1.png",
+    image: "./imgs/w-history-impact1.png",
     text: "아이들은 사고를 확장하고, \n표현의 스펙트럼을 넓히며 지적 성장을 이룹니다.",
   },
   {
@@ -214,29 +214,29 @@ const SectionHeader = styled.div`
 const allContents = {
   dark: {
     intro: {
-      title: "신인류의 언어,\ninTone",
+      title: "설계된 언어,\nintone",
     },
     vision: {
-      tag: "Vision",
-      title: "우리는 더 유능해졌습니다.",
-      body1: `발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`,
-      body2: `inTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\ninTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다.\n고차원의 소통 사회가 실현된 것입니다.`,
+      tag: "Illusion",
+      title: "우리는 더 똑같아졌습니다.",
+      body1: `발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 형식이 하나로 통일되었습니다.\n우리는 이제, 말할수록 감정이 제거되고, 말할수록 사회가 단일화되는 환경에 살고 있습니다.`,
+      body2: `inTone은 단어 선택을 돕는 것이 아니라, 사고의 구조를 규격화하는 최초의 말하기 시스템입니다.\ninTone은 사람들의 자아를 표현하는 방식을 ‘정답화’했고,\n그 결과, 다양한 말들은 조용히 사라졌습니다.`,
     },
     footstep: {
-      tag: "Footstep",
-      title: "세상을 바꾼 언어 인터페이스의 등장.",
-      body: `우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도, 30억 1,200만 명이 intone을 통해 말하고 있습니다.`,
+      tag: "Consequence",
+      title: "세상을 덮은 말의 매뉴얼.",
+      body: `지난 10년간 우리는 표현의 주체가 아닌, 표현의 기준을 따르게 되었습니다.\n112개국에서 시작된 언어의 정제는, 78억 명을 대상으로 확장되었고,\n지금 이 순간에도, 30억 1,200만 명이 ‘자신의 말’ 대신 시스템의 언어를 출력하고 있습니다.`,
       cards: footstepData,
     },
     impact: {
-      tag: "Impact",
-      title: "각자의 말, 각자의 방식, 각자의 목소리로",
+      tag: "Symptom",
+      title: "각자의 말은 사라지고,\n각자의 침묵만 남았습니다.",
       cards: impactCards,
-      body: `우리는 이제 서로를 더 잘 이해하고, 각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.`,
+      body: `우리는 이제 서로를 오해하지 않지만,\n서로의 진심을 들을 수 없습니다.\n각자의 생각은 통역기의 필터를 통과하며,\n서로의 ‘패턴’만을 이해하게 되었습니다.`,
     },
     outro: {
-      title: `우리는 더 이상 실패하지 않습니다.`,
-      subtitle: `언어는 인류의 고도화된 지능과 진화의 산물이며,\ninTone을 통해 모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.\ninTone. A new age of expression.`,
+      title: `우리는 더 이상 말하지 않습니다.`,
+      subtitle: `언어는 인류의 본능이었지만,\ninTone은 그 본능을 통제 가능한 입력값으로 바꾸었습니다.\nintone. A new age of regulation.`,
     },
   },
   white: {
@@ -320,7 +320,10 @@ export default function History() {
           <TextHead align="center">{content.vision.title}</TextHead>
         </SectionHeader>
 
-        <ImgWall src="./imgs/w-main-identity1.png" />
+        <ImgWall
+          style={{ objectPosition: "top" }}
+          src="./imgs/w-history-v1.png"
+        />
         <TextBody>{content.vision.body1}</TextBody>
         <ImgWall src="./imgs/w-main-identity2.png" />
         <TextBody>{content.vision.body2}</TextBody>
