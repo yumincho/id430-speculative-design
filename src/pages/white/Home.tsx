@@ -233,7 +233,7 @@ const FeatureCardPlus = styled.div`
 `;
 
 const ExploreButton = styled.div`
-  color: #0071e3;
+  color: ${({ theme }) => theme.brandColor};
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
@@ -244,7 +244,9 @@ const ExploreButton = styled.div`
   transition: text-decoration 0.2s;
 
   &:hover {
-    text-decoration: underline;
+    & > div {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -451,7 +453,7 @@ export default function Home() {
           inTone과 함께 당신의 개성을 살려보세요
           <br />
           <ExploreButton>
-            Explore all accessories{" "}
+            <div>Explore all accessories</div>
             <span style={{ fontSize: "1.2em" }}>&#8250;</span>
           </ExploreButton>
         </SectionBody>

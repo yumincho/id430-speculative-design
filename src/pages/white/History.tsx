@@ -137,7 +137,7 @@ const HandwrittenFont = createGlobalStyle`
 const Handwritten = styled.span`
   font-family: "Dancing Script", cursive;
   font-size: 1.2em;
-  color: rgb(255, 90, 0);
+  color: ${({ theme }) => theme.brandColor};
   vertical-align: middle;
 `;
 
@@ -262,7 +262,7 @@ export default function History() {
 const SectionTag = styled.div`
   font-size: 22px;
   font-weight: 700;
-  color: rgb(255, 90, 0);
+  color: ${({ theme }) => theme.brandColor};
 `;
 
 const SectionHead = styled.div`
@@ -294,14 +294,14 @@ const CarouselContainer = styled.div`
 
 const StyledSlider = styled(Slider)`
   .slick-dots li button:before {
-    color: rgb(255, 90, 0);
+    color: ${({ theme }) => theme.brandColor};
   }
   .slick-dots li.slick-active button:before {
-    color: rgb(255, 90, 0);
+    color: ${({ theme }) => theme.brandColor};
   }
   .slick-prev:before,
   .slick-next:before {
-    color: rgb(255, 90, 0);
+    color: ${({ theme }) => theme.brandColor};
   }
 `;
 
@@ -347,7 +347,7 @@ const CarouselImage = styled.img`
 const Year = styled.div`
   font-size: 24px;
   font-weight: 700;
-  color: rgb(255, 90, 0);
+  color: ${({ theme }) => theme.brandColor};
   margin-bottom: 0.5rem;
 `;
 
