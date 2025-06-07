@@ -48,7 +48,7 @@ export default function Article() {
     >
       <H1>{article.title}</H1>
       <img
-        src={article.imageUrl}
+        src={`../${article.imageUrl}`}
         alt={article.title}
         style={{ width: "100%", height: "400px", objectFit: "cover" }}
       />
