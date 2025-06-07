@@ -75,6 +75,12 @@ const impactCards = [
   },
 ];
 
+const Wrapper = styled.div`
+  & > *:first-child {
+    height: calc(100vh - 100px); // 원하는 height
+  }
+`;
+
 const Section = styled.div`
   height: 100vh;
   display: flex;
@@ -161,7 +167,7 @@ export default function History() {
   };
 
   return (
-    <div className="page">
+    <Wrapper>
       {/* Intro Section */}
       <Section>
         <SectionHead>
@@ -249,7 +255,7 @@ export default function History() {
         </SectionHead>
         <SectionHead>{`InTone. A new age of expression.`}</SectionHead>
       </Section>
-    </div>
+    </Wrapper>
   );
 }
 

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../styles/stories.module.css";
 import styled, { useTheme } from "styled-components";
 import { useMemo } from "react";
-import { Text } from "../../components/common";
+import { H2, Text } from "../../components/common";
 
 const ArticlePreview = styled.div`
   display: flex;
@@ -19,13 +19,10 @@ const ArticlePreview = styled.div`
   position: relative;
   padding: 16px;
   box-sizing: border-box;
-  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   &:hover {
     transform: scale(1.02);
     transition: transform 0.3s ease-in-out;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -60,10 +57,7 @@ const ArticlePreviewContent = styled.div`
   box-sizing: border-box;
 `;
 
-const ArticleTitle = styled.h1`
-  color: ${({ theme }) => theme.text};
-  font-size: 36px;
-  line-height: 1.4;
+const ArticleTitle = styled(H2)`
   margin: 0;
 `;
 
