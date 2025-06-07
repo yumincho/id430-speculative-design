@@ -153,7 +153,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60%;
+  width: fit-content;
   margin: 0 auto;
 `;
 
