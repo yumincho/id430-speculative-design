@@ -264,9 +264,10 @@ const SlotLines: React.FC = () => {
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % slotLines.length);
         setAnimating(false);
-      }, 400); // duration of animation
-    }, 4000);
+      }, 600); // duration of animation
+    }, 3000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
