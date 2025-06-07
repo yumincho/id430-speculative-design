@@ -2,14 +2,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useTheme, type DefaultTheme } from "styled-components";
 
 // White mode pages
-import Home from "../pages/white/Home";
 import History from "../pages/white/History";
 
 // Dark mode pages
-import HomeDark from "../pages/dark/Home";
 import HistoryDark from "../pages/dark/History";
 
 // Common pages
+import Home from "../pages/common/Home";
 import Article from "../pages/common/Article";
 import Stories from "../pages/common/Stories";
 import Store from "../pages/common/Store";
@@ -23,10 +22,7 @@ export default function AppRouter() {
       <Route path="/" element={<Navigate to="/home" replace />} />
 
       {/* Routes */}
-      <Route
-        path="/home"
-        element={mode === "white" ? <Home /> : <HomeDark />}
-      />
+      <Route path="/home" element={<Home />} />
       <Route path="/store" element={<Store />} />
       <Route
         path="/history"

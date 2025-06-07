@@ -174,7 +174,7 @@ const ProductCard = styled.div<{ disabled?: boolean }>`
 `;
 
 const TagButton = styled.div<{ selected?: boolean }>`
-  background-color: ${({ selected, theme }) => selected && theme.background};
+  background-color: ${({ selected, theme }) => selected && theme.button};
   color: ${({ selected, theme }) => (selected ? theme.text : theme.border)};
   border: ${({ selected, theme }) => !selected && `1px solid ${theme.border}`};
   padding: 6px 16px;

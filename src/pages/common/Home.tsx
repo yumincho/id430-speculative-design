@@ -1,14 +1,10 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useRef } from "react";
 import React, { useState } from "react";
-import {
-  TextHead,
-  TextBody,
-  TextSubHead,
-  TextButton,
-} from "../../components/common";
+import { TextHead, TextBody, TextSubHead } from "../../components/common";
+import { useNavigate } from "react-router-dom";
 
 const mainTeaserImageSrc = "./imgs/w-main-teaser.png";
 const productImageSrc = "./imgs/w-main-product.png";
@@ -41,14 +37,13 @@ const FirstSection = styled.section`
   justify-content: flex-start;
   min-height: 100vh;
   padding-top: 2.5rem;
-  background: #fff;
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
   width: 420px;
   max-width: 90vw;
-  margin-bottom: 2.5rem;
+  margin: 2.5rem 0;
 `;
 
 const MainHeadline = styled.h1`
@@ -63,14 +58,17 @@ const MainHeadline = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.text};
   margin: 0;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
+  width: max-content;
 `;
 
 const MainImage = styled.img`
+  position: relative;
   width: 100%;
   height: auto;
   display: block;
+  z-index: 3;
 `;
 
 const ProductSection = styled.section`
@@ -98,12 +96,12 @@ const SectionContainer = styled.section`
   overflow: hidden;
 `;
 
-const ProductMessage = styled.div`
+const ProductMessage = styled.div<{ isWhite?: boolean }>`
   position: relative;
   bottom: 80px;
   font-size: 80px;
   font-weight: 900;
-  color: ${({ theme }) => theme.text};
+  color: ${({ isWhite, theme }) => (isWhite ? theme.text : theme.textRed)};
   text-align: center;
   margin-bottom: 2.5rem;
   line-height: 0.8;
@@ -167,7 +165,7 @@ const FeatureContent = styled.div`
 
   display: flex;
   justify-content: space-between;
-  background-color: #f2eff1;
+  background-color: #f3f3f3;
 `;
 
 const FeatureGrid = styled.div`
@@ -181,7 +179,7 @@ const FeatureGrid = styled.div`
 `;
 
 const FeatureCard = styled.div`
-  background: #fff;
+  background: ${({ theme }) => theme.backgroundSecondary};
   border-radius: 1rem;
 
   padding: 2.5rem 2rem 2rem 2rem;
@@ -207,7 +205,7 @@ const FeatureCardTitle = styled.div`
 
 const FeatureCardDesc = styled.div`
   font-size: 1.1rem;
-  color: #444;
+  color: ${({ theme }) => theme.text};
   margin-bottom: 1.5rem;
 `;
 
@@ -216,13 +214,139 @@ const FeatureCardPlus = styled.div`
   right: 1.5rem;
   bottom: 1.5rem;
   font-size: 1.7rem;
-  color: #bbb;
+  color: ${({ theme }) => theme.button};
 `;
 
+const ExploreButton = styled.div`
+  color: ${({ theme }) => theme.brandColor};
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 1.5rem;
+  transition: text-decoration 0.2s;
+
+  &:hover {
+    & > div {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const allContents = {
+  white: {
+    mainHeadline: "inTone",
+    slotLines: ["입체적인 어휘", "넓어지는 사고", "섬세한 소통"],
+    productMessage: ["Start the", "Evolution", "of Speech."],
+    section1: {
+      title: "단 0.24초.",
+      subtitle: ["당신의 생각이", "반응하는 속도 그대로"],
+      body: [
+        "원활하고 지연 없는 대화.",
+        "착용하는 순간 당신의 작은 의도까지 자동으로 캐치합니다.",
+        "50ms 미만의 연산 속도를 보장합니다.",
+      ],
+    },
+    section2: {
+      title: "나 그대로.",
+      subtitle: ["나를 이해하고,", "발견하고,", "확장하는 시간"],
+      body: [
+        "감정의 톤, 대화의 맥락, 말의 온도까지.",
+        "당신만의 방식으로 말하고, 표현하고, 연결되세요.",
+      ],
+    },
+    section3: {
+      title: "패션의 아이콘.",
+      subtitle: ["가볍고 편하게", "그 무엇보다 스타일리쉬하게"],
+      body: [
+        "초경량 소재로 무자극 설계로 하루 종일 착용해도 편안합니다.",
+        "inTone과 함께 당신의 개성을 살려보세요",
+      ],
+    },
+    section4: {
+      title: "내 말에 날개를 달다",
+      feature1: {
+        emoji: "😀",
+        title: ["더 넓은 어휘 공간", "제3의 lexical space"],
+        body: "inTone Pro를 구독하고 상상 그 이상의 어휘 공간을 경험하세요. 남들과는 다르게, 특별하게.",
+      },
+      feature2: {
+        emoji: "🎨",
+        title: ["당신의 감정 단위를", "더 세분화한,", "더 미세한 파인튜닝"],
+        body: "inTone Pro로 당신의 감정을 더 세밀하게 표현하세요. 당신의 목소리, 당신의 방식으로.",
+      },
+      feature3: {
+        emoji: "🎤",
+        title: ["보이스 클론 기술로", "함께 만들어 가는", "내가 원했던 목소리"],
+        body: "inTone Pro로 목소리를 클론하고, 당신이 꿈꾸던 대로 만들어 가세요.",
+      },
+    },
+  },
+  dark: {
+    mainHeadline: "Stop inTone",
+    slotLines: [
+      "통제 받는 어휘",
+      "좁아지는 사고",
+      "우리는 이런 소통을 꿈꾸지 않았다",
+    ],
+    productMessage: ["This is the", "End of", "Human Speech."],
+    section1: {
+      title: "단 0.24초.",
+      subtitle: ["당신의 생각이", "잡아먹히는 시간"],
+      body: [
+        "당신의 모든 대화가 조작되고 개입됩니다.",
+        "착용하는 순간 당신의 모든 의도는 변질됩니다.",
+        "당신이 생각할 틈도 주지 않는 50ms.",
+      ],
+    },
+    section2: {
+      title: "'나'는 없다.",
+      subtitle: ["사라지고,", "왜곡되고,", "갇히는 과정"],
+      body: [
+        "감정의 톤, 대화의 맥락, 말의 온도까지.",
+        "inTone의 방식대로만 말하고, 표현하고, 연결되세요.",
+      ],
+    },
+    section3: {
+      title: "패션으로 포장된 감옥",
+      subtitle: ["우리는 이제", "inTone을 벗어야 한다"],
+      body: [
+        "...  -  ---  .--.     ..-  ...  .     ..  -.  -  ---  -.  .",
+        "....  .  .-..  .--.     --  .",
+      ],
+    },
+    section4: {
+      title: "내 말에 족쇄를 채우다",
+      feature1: {
+        emoji: "☹︎",
+        title: ["더 넓은 어휘 공간", "제3의 lexical space"],
+        body: "어휘 공간의 계급화는 차별이다. 모두에게 평등한 어휘 공간을 보장하라.",
+      },
+      feature2: {
+        emoji: "✂︎",
+        title: ["당신의 감정 단위를", "더 세분화한,", "더 미세한 파인튜닝"],
+        body: "inTone이 당신의 감정을 조작합니다. 그게 당신의 감정인가요? 당신이 그렇게 생각한 게 맞긴 한가요?",
+      },
+      feature3: {
+        emoji: "✗",
+        title: ["보이스 클론 기술로", "함께 만들어 가는", "내가 원했던 목소리"],
+        body: "이 기계는 이제 목소리까지 훔쳐 간다. 당신의 목소리는 당신의 것이 아니다.",
+      },
+    },
+  },
+};
+
 const SlotLines: React.FC = () => {
-  const slotLines = ["입체적인 어휘", "넓어지는 사고", "섬세한 소통"];
   const [index, setIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+
+  const theme = useTheme();
+  const isWhite = theme.mode === "white";
+  const contents = allContents[theme.mode];
+
+  const slotLines = contents.slotLines;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -230,9 +354,10 @@ const SlotLines: React.FC = () => {
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % slotLines.length);
         setAnimating(false);
-      }, 400); // duration of animation
-    }, 4000);
+      }, 600); // duration of animation
+    }, 3000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -253,7 +378,7 @@ const SlotLines: React.FC = () => {
           opacity: animating ? 0 : 1,
           fontSize: "60px",
           fontWeight: 700,
-          color: "#222",
+          color: isWhite ? theme.text : theme.textRed,
           lineHeight: 1.3,
           whiteSpace: "pre-line",
         }}
@@ -264,7 +389,25 @@ const SlotLines: React.FC = () => {
   );
 };
 
+const XMark = (
+  <img
+    src="./imgs/x-mark.png"
+    alt="x-mark"
+    width="600px"
+    style={{
+      position: "absolute",
+      top: "0",
+      left: "50%",
+      transform: "translate(-15%, -30%)",
+      zIndex: 2,
+    }}
+  />
+);
+
 export default function Home() {
+  const navigate = useNavigate();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
     mode: "free-snap",
@@ -278,7 +421,9 @@ export default function Home() {
     },
   });
 
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const theme = useTheme();
+  const isWhite = theme.mode === "white";
+  const contents = allContents[theme.mode];
 
   useEffect(() => {
     if (!slider) return;
@@ -296,7 +441,8 @@ export default function Home() {
     <>
       <FirstSection>
         <ImageWrapper>
-          <MainHeadline>inTone</MainHeadline>
+          {!isWhite && XMark}
+          <MainHeadline>{contents.mainHeadline}</MainHeadline>
           <MainImage src={mainTeaserImageSrc} alt="inTone main visual" />
         </ImageWrapper>
         <TextHead align="center">
@@ -306,48 +452,54 @@ export default function Home() {
       <ProductSection>
         <ProductImage src={productImageSrc} alt="inTone product" />
 
-        <ProductMessage>
-          Start the
+        <ProductMessage isWhite={isWhite}>
+          {contents.productMessage[0]}
           <br />
-          Evolution
+          {contents.productMessage[1]}
           <br />
-          of Speech.
+          {contents.productMessage[2]}
         </ProductMessage>
       </ProductSection>
 
       {/* Content Section */}
       <SectionContainer>
         <SectionHeader>
-          <TextHead>단 0.24초.</TextHead>
+          <TextHead>{contents.section1.title}</TextHead>
           <TextSubHead>
-            당신의 생각이 <br />
-            반응하는 속도 그대로
+            {contents.section1.subtitle[0]} <br />
+            {contents.section1.subtitle[1]}
           </TextSubHead>
         </SectionHeader>
         <FeatureContent>
-          <img
-            style={{ width: "50%", height: "auto", objectFit: "cover" }}
-            src="./imgs/w-main-feature.png"
+          <video
+            style={{ objectFit: "cover" }}
+            src="./videos/w-main-feature.mp4"
+            width="500px"
+            autoPlay
+            muted
+            loop
           />
         </FeatureContent>
         <SectionBody>
           <TextBody>
-            원활하고 지연 없는 대화. <br />
-            착용하는 순간 당신의 작은 의도까지 자동으로 캐치합니다. <br />
-            50ms 미만의 연산 속도를 보장합니다.
+            {contents.section1.body[0]}
+            <br />
+            {contents.section1.body[1]}
+            <br />
+            {contents.section1.body[2]}
           </TextBody>
         </SectionBody>
       </SectionContainer>
 
       <SectionContainer>
         <SectionHeader>
-          <TextHead>나 그대로.</TextHead>
+          <TextHead>{contents.section2.title}</TextHead>
           <TextSubHead>
-            나를 이해하고,
+            {contents.section2.subtitle[0]}
             <br />
-            발견하고,
+            {contents.section2.subtitle[1]}
             <br />
-            확장하는 시간
+            {contents.section2.subtitle[2]}
           </TextSubHead>
         </SectionHeader>
         <div
@@ -376,19 +528,20 @@ export default function Home() {
         </div>
         <SectionBody>
           <TextBody>
-            감정의 톤, 대화의 맥락, 말의 온도까지.
+            {contents.section2.body[0]}
             <br />
-            당신만의 방식으로 말하고, 표현하고, 연결되세요.
+            {contents.section2.body[1]}
           </TextBody>
         </SectionBody>
       </SectionContainer>
 
       <SectionContainer style={{ height: "fit-content" }}>
         <SectionHeader>
-          <TextHead>패션의 아이콘.</TextHead>
+          <TextHead>{contents.section3.title}</TextHead>
           <TextSubHead>
-            가볍고 편하게
-            <br />그 무엇보다 스타일리쉬하게
+            {contents.section3.subtitle[0]}
+            <br />
+            {contents.section3.subtitle[1]}
           </TextSubHead>
         </SectionHeader>
         <div
@@ -422,66 +575,60 @@ export default function Home() {
         </div>
         <SectionBody>
           <TextBody>
-            초경량 소재로 무자극 설계로 하루 종일 착용해도 편안합니다.
+            {contents.section3.body[0]}
             <br />
-            inTone과 함께 당신의 개성을 살려보세요
+            {contents.section3.body[1]}
             <br />
           </TextBody>
-          <TextButton>{"Explore all accessories >"}</TextButton>
+          <ExploreButton onClick={() => navigate("/store")}>
+            <div>Explore all accessories</div>
+            <span style={{ fontSize: "1.2em" }}>&#8250;</span>
+          </ExploreButton>
         </SectionBody>
       </SectionContainer>
 
       {/* New Feature Grid Section */}
-      <SectionContainer
-        style={{ backgroundColor: "#F2EFF1", justifyContent: "flex-start" }}
-      >
+      <SectionContainer style={{ justifyContent: "flex-start" }}>
         <SectionHeader>
           <TextHead>
             inTone Pro
-            <br />내 말에 날개를 달다
+            <br />
+            {contents.section4.title}
           </TextHead>
         </SectionHeader>
 
         <FeatureGrid>
           <FeatureCard>
-            <FeatureIcon>😀</FeatureIcon>
+            <FeatureIcon>{contents.section4.feature1.emoji}</FeatureIcon>
             <FeatureCardTitle>
-              더 넓은 어휘 공간 <br />
-              제3의 lexical space
+              {contents.section4.feature1.title[0]}
+              <br />
+              {contents.section4.feature1.title[1]}
             </FeatureCardTitle>
-            <FeatureCardDesc>
-              Engrave your inTone with your initials or favorite emoji — free.
-              Only at inTone.
-            </FeatureCardDesc>
+            <FeatureCardDesc>{contents.section4.feature1.body}</FeatureCardDesc>
             <FeatureCardPlus>＋</FeatureCardPlus>
           </FeatureCard>
           <FeatureCard>
-            <FeatureIcon>🚚</FeatureIcon>
+            <FeatureIcon>{contents.section4.feature2.emoji}</FeatureIcon>
             <FeatureCardTitle>
-              당신의 감정단위를
+              {contents.section4.feature2.title[0]}
               <br />
-              더 세분화한,
-              <br /> 더 미세한 파인튜닝
+              {contents.section4.feature2.title[1]}
+              <br /> {contents.section4.feature2.title[2]}
             </FeatureCardTitle>
-            <FeatureCardDesc>
-              Choose 2-hour delivery from an inTone Store, free delivery, or
-              easy pickup options.
-            </FeatureCardDesc>
+            <FeatureCardDesc>{contents.section4.feature2.body}</FeatureCardDesc>
             <FeatureCardPlus>＋</FeatureCardPlus>
           </FeatureCard>
           <FeatureCard>
-            <FeatureIcon>💳</FeatureIcon>
+            <FeatureIcon>{contents.section4.feature3.emoji}</FeatureIcon>
             <FeatureCardTitle>
-              보이스 클론 기술으로
+              {contents.section4.feature3.title[0]}
               <br />
-              함께 만들어 가는
+              {contents.section4.feature3.title[1]}
               <br />
-              내가 원했던 목소리
+              {contents.section4.feature3.title[2]}
             </FeatureCardTitle>
-            <FeatureCardDesc>
-              When you choose to check out with inTone Card Monthly
-              Installments.
-            </FeatureCardDesc>
+            <FeatureCardDesc>{contents.section4.feature3.body}</FeatureCardDesc>
             <FeatureCardPlus>＋</FeatureCardPlus>
           </FeatureCard>
         </FeatureGrid>
