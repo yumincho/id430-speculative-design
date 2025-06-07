@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../styles/stories.module.css";
 import styled, { useTheme } from "styled-components";
 import { useMemo } from "react";
-import { H2, Text } from "../../components/common";
+import { H2, H3, Text } from "../../components/common";
+import type { ThemeMode } from "../../components/styles/theme";
 
 const ArticlePreview = styled.div`
   display: flex;
@@ -61,6 +62,22 @@ const ArticleTitle = styled(H2)`
   margin: 0;
 `;
 
+const Header = styled.div`
+  justify-items: center;
+`;
+
+const headerInfo: Record<ThemeMode, { title: string; description: string }> = {
+  white: {
+    title: "모든 스토리",
+    description:
+      "inTone과 함께, 신인류의 언어를 맞이한 사람들의 이야기를 들어보세요.",
+  },
+  dark: {
+    title: "'진짜' 스토리",
+    description: "속지 마세요. inTone은 불행과 절망의 시작입니다.",
+  },
+};
+
 export default function Stories() {
   const navigate = useNavigate();
   const theme = useTheme();
@@ -73,6 +90,10 @@ export default function Stories() {
 
   return (
     <div className={styles.Container}>
+      <Header>
+        <H3>{headerInfo[theme.mode].title}</H3>
+        <Text>{headerInfo[theme.mode].description}</Text>
+      </Header>
       {articles.map((article) => (
         <ArticlePreview
           key={article.id}
