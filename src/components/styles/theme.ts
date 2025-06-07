@@ -2,6 +2,7 @@ export type ThemeMode = "white" | "dark";
 
 export const whiteTheme = {
   mode: "white" as ThemeMode,
+  brandColor: "rgb(255, 90, 0)",
   text: "#333333",
   textRed: "#d9304c",
   textReverse: "#ffffff",
@@ -14,6 +15,7 @@ export const whiteTheme = {
 
 export const darkTheme = {
   mode: "dark" as ThemeMode,
+  brandColor: "rgb(255, 90, 0)",
   text: "#ffffff",
   textRed: "#ff1744",
   textReverse: "#000000",

@@ -233,7 +233,7 @@ const FeatureCardPlus = styled.div`
 `;
 
 const ExploreButton = styled.div`
-  color: #0071e3;
+  color: ${({ theme }) => theme.brandColor};
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
