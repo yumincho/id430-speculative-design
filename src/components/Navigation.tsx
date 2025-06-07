@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const Nav = styled.div`
   width: 100%;
+  height: 100px;
+
+  box-sizing: border-box;
   background: transparent;
   padding: 2.5rem 0;
   display: flex;

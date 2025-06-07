@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const ArticleWrapper = styled.div`
   display: flex;
@@ -89,6 +89,12 @@ export const TextBody = styled.div<{ align?: "center" | "left" | "right" }>`
   white-space: pre-line;
 `;
 
+export const TextTag = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.brandColor};
+`;
+
 export const TextButton = styled.div`
   color: ${({ theme }) => theme.brandColor};
   font-size: 18px;
@@ -102,4 +108,43 @@ export const TextButton = styled.div`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const TextHighlight = styled.span`
+  color: ${({ theme }) => theme.brandColor};
+  font-weight: 700;
+`;
+
+/* Image components */
+export const ImgWall = styled.img<{ height?: number }>`
+  width: 100%;
+  height: ${({ height }) => `${height ?? 450}px`};
+  object-fit: cover;
+`;
+
+const numberChange = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  51% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
+export const AnimatedNumber = styled.span`
+  display: inline-block;
+  color: ${({ theme }) => theme.brandColor};
+  font-weight: 700;
+  animation: ${numberChange} 0.6s cubic-bezier(0.4, 2.2, 0.2, 1);
+  text-align: right;
 `;

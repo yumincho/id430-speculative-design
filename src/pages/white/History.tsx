@@ -3,8 +3,15 @@ import { TypeAnimation } from "react-type-animation";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { motion } from "framer-motion";
-import { TextBody, TextHead } from "../../components/common";
+import {
+  ImgWall,
+  TextBody,
+  TextHead,
+  TextHighlight,
+  TextTag,
+  AnimatedNumber,
+} from "../../components/common";
+import { useState, useEffect } from "react";
 
 const footstepData = [
   {
@@ -78,22 +85,28 @@ const impactCards = [
 
 const Wrapper = styled.div`
   & > *:first-child {
-    height: calc(100vh - 100px); // 원하는 height
+    min-height: calc(100vh - 200px); // 원하는 height
+    margin-bottom: 100px;
   }
 `;
 
-const Section = styled.div`
+const Section = styled.div<{ margin?: boolean; background?: boolean }>`
   min-height: 100vh;
   height: fit-content;
   width: 100vw;
 
   box-sizing: border-box;
   padding: 0 15rem;
+  margin: ${({ margin }) => (margin === true ? "20rem 0" : "0")};
+
+  background-color: ${({ background, theme }) =>
+    background === true ? theme.backgroundSecondary : theme.background};
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  align-items: center;
+  gap: 4rem;
 
   @media (max-width: 800px) {
     max-width: 98vw;
@@ -101,24 +114,15 @@ const Section = styled.div`
   }
 `;
 
-const VisionImageWrapper = styled.div`
-  position: absolute;
-  right: 0;
+const SectionHeader = styled.div`
+  width: fit-content;
+  height: fit-content;
 
-  flex: 1.2;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const VisionImage = styled(motion.img)`
-  width: 320px;
-  max-width: 100%;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-  @media (max-width: 900px) {
-    width: 100%;
-    margin-top: 1rem;
-  }
+  gap: 0.8rem;
 `;
 
 const HandwrittenFont = createGlobalStyle`
@@ -132,6 +136,73 @@ const Handwritten = styled.span`
   vertical-align: middle;
 `;
 
+const AnimatedCounter: React.FC<{ children: string }> = ({ children }) => {
+  // Parse the initial value to separate numbers and units
+  const parseValue = (value: string) => {
+    const match = value.match(/(\d+)억\s*(\d+)만\s*명/);
+    if (!match) return { billions: 30, millions: 1200 };
+    return {
+      billions: parseInt(match[1]),
+      millions: parseInt(match[2].replace(/,/g, "")),
+    };
+  };
+
+  const [values, setValues] = useState(parseValue(children));
+  const [isAnimatingBillions, setIsAnimatingBillions] = useState(false);
+  const [isAnimatingMillions, setIsAnimatingMillions] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Animate billions
+      setIsAnimatingBillions(true);
+      setTimeout(() => {
+        setValues((prev) => ({
+          ...prev,
+          billions: Math.floor(Math.random() * 10) + 30,
+        }));
+        setIsAnimatingBillions(false);
+      }, 300);
+
+      // Animate millions with a slight delay
+      setTimeout(() => {
+        setIsAnimatingMillions(true);
+        setTimeout(() => {
+          setValues((prev) => ({
+            ...prev,
+            millions: Math.floor(Math.random() * 10000),
+          }));
+          setIsAnimatingMillions(false);
+        }, 300);
+      }, 150);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <TextHighlight>
+      <AnimatedNumber
+        style={{
+          animation: isAnimatingBillions ? "none" : undefined,
+          width: "26px",
+        }}
+      >
+        {values.billions}
+      </AnimatedNumber>
+      {`억 `}
+      <AnimatedNumber
+        style={{
+          animation: isAnimatingMillions ? "none" : undefined,
+          width: "58px",
+        }}
+      >
+        {values.millions.toLocaleString()}
+      </AnimatedNumber>
+      {`만 명`}
+    </TextHighlight>
+  );
+};
+
 export default function History() {
   const settings = {
     dots: true,
@@ -141,6 +212,7 @@ export default function History() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -177,29 +249,39 @@ export default function History() {
       </Section>
 
       {/* Vision Section */}
-      <Section>
-        <SectionTag>Vision</SectionTag>
-        <TextHead>우리는 더 유능해졌습니다.</TextHead>
-        <TextBody>{`발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`}</TextBody>
-        <TextBody>{`InTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\nInTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다. 고차원의 소통 사회가 실현된 것입니다.\n이제 우리는,언어를 통해 사고하고, 사고를 통해 성장하는 시대에 진입했습니다.`}</TextBody>
+      <Section margin={true}>
+        <SectionHeader>
+          <TextTag>Vision</TextTag>
+          <TextHead align="center">우리는 더 유능해졌습니다.</TextHead>
+        </SectionHeader>
 
-        <VisionImageWrapper>
-          <VisionImage
-            src="https://placehold.co/400x500?text=Vision+Image"
-            alt="Vision"
-            initial={{ x: 120, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 60, damping: 18 }}
-            viewport={{ once: true, amount: 0.5 }}
-          />
-        </VisionImageWrapper>
+        <ImgWall src="./imgs/w-main-identity1.png" />
+        <TextBody>
+          {`발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, `}
+          <TextHighlight>
+            말할수록 사고가 정제되고, 말할수록 사회가 지능화되는
+          </TextHighlight>
+          {` 환경에 살고 있습니다.`}
+        </TextBody>
+        <ImgWall src="./imgs/w-main-identity2.png" />
+        <TextBody>
+          <TextHighlight>inTone</TextHighlight>
+          {`은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\ninTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다.\n고차원의 소통 사회가 실현된 것입니다.`}
+        </TextBody>
       </Section>
 
       {/* Footstep Section */}
-      <Section>
-        <SectionTag>Footstep</SectionTag>
-        <TextHead>세상을 바꾼 언어 인터페이스의 등장.</TextHead>
-        <TextBody>{`우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도, 30억 1,200만 명이 intone을 통해 말하고 있습니다.`}</TextBody>
+      <Section margin={true} background={true}>
+        <SectionHeader>
+          <TextTag>Footstep</TextTag>
+          <TextHead>세상을 바꾼 언어 인터페이스의 등장.</TextHead>
+        </SectionHeader>
+
+        <TextBody>
+          {`우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도,`}
+          <AnimatedCounter>30억 1,200만 명</AnimatedCounter>
+          {`이 intone을 통해 말하고 있습니다.`}
+        </TextBody>
 
         <CarouselContainer>
           <StyledSlider {...settings}>
@@ -218,9 +300,12 @@ export default function History() {
       </Section>
 
       {/* Impact Section */}
-      <Section>
-        <SectionTag>Impact</SectionTag>
-        <TextHead>각자의 말, 각자의 방식, 각자의 목소리로</TextHead>
+      <Section margin={true}>
+        <SectionHeader>
+          <TextTag>Impact</TextTag>
+          <TextHead>각자의 말, 각자의 방식, 각자의 목소리로</TextHead>
+        </SectionHeader>
+
         <ImpactCardGrid>
           {impactCards.map((card, idx) => (
             <ImpactCard key={idx}>
@@ -248,12 +333,6 @@ export default function History() {
     </Wrapper>
   );
 }
-
-const SectionTag = styled.div`
-  font-size: 22px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.brandColor};
-`;
 
 const SectionHead = styled.div`
   font-size: 56px;
@@ -289,7 +368,6 @@ const CarouselItem = styled.div`
   align-items: stretch;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   height: 400px;
   max-width: 320px;
   overflow: hidden;
@@ -298,9 +376,8 @@ const CarouselItem = styled.div`
   z-index: 1;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    z-index: 2;
+    transform: scale(102%);
+    z-index: 5;
   }
 `;
 
@@ -353,7 +430,6 @@ const ImpactCardGrid = styled.div`
 const ImpactCard = styled.div`
   background: #f7f7f9;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   flex: 1 1 0;
   min-width: 0;
   display: flex;
