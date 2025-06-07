@@ -59,6 +59,7 @@ const MainHeadline = styled.h1`
   margin: 0;
   z-index: 1;
   pointer-events: none;
+  width: max-content;
 `;
 
 const MainImage = styled.img`
@@ -112,12 +113,12 @@ const SectionContainer = styled.section`
   overflow: hidden;
 `;
 
-const ProductMessage = styled.div`
+const ProductMessage = styled.div<{ isWhite?: boolean }>`
   position: relative;
   bottom: 80px;
   font-size: 80px;
   font-weight: 900;
-  color: ${({ theme }) => theme.text};
+  color: ${({ isWhite, theme }) => (isWhite ? theme.text : theme.textRed)};
   text-align: center;
   margin-bottom: 2.5rem;
   line-height: 0.8;
@@ -252,12 +253,32 @@ const ExploreButton = styled.div`
   }
 `;
 
+const allContents = {
+  white: {
+    mainHeadline: "inTone",
+    slotLines: ["입체적인 어휘", "넓어지는 사고", "섬세한 소통"],
+    productMessage: ["Start the", "Evolution", "of Speech."],
+  },
+  dark: {
+    mainHeadline: "Stop inTone",
+    slotLines: [
+      "어휘는 통제 받는다",
+      "사고는 좁아진다",
+      "이게 우리가 꿈꾸던 소통인가?",
+    ],
+    productMessage: ["This is the", "End of", "Human Speech."],
+  },
+};
+
 const SlotLines: React.FC = () => {
-  const slotLines = ["입체적인 어휘", "넓어지는 사고", "섬세한 소통"];
   const [index, setIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
   const theme = useTheme();
+  const isWhite = theme.mode === "white";
+  const contents = allContents[theme.mode];
+
+  const slotLines = contents.slotLines;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -289,7 +310,7 @@ const SlotLines: React.FC = () => {
           opacity: animating ? 0 : 1,
           fontSize: "60px",
           fontWeight: 700,
-          color: theme.text,
+          color: isWhite ? theme.text : theme.textRed,
           lineHeight: 1.3,
           whiteSpace: "pre-line",
         }}
@@ -301,6 +322,9 @@ const SlotLines: React.FC = () => {
 };
 
 export default function Home() {
+  const navigate = useNavigate();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
     mode: "free-snap",
@@ -314,9 +338,9 @@ export default function Home() {
     },
   });
 
-  const navigate = useNavigate();
-
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const theme = useTheme();
+  const isWhite = theme.mode === "white";
+  const contents = allContents[theme.mode];
 
   useEffect(() => {
     if (!slider) return;
@@ -334,7 +358,7 @@ export default function Home() {
     <>
       <FirstSection>
         <ImageWrapper>
-          <MainHeadline>inTone</MainHeadline>
+          <MainHeadline>{contents.mainHeadline}</MainHeadline>
           <MainImage src={mainTeaserImageSrc} alt="inTone main visual" />
         </ImageWrapper>
         <MainTitle center={true}>
@@ -344,12 +368,12 @@ export default function Home() {
       <ProductSection>
         <ProductImage src={productImageSrc} alt="inTone product" />
 
-        <ProductMessage>
-          Start the
+        <ProductMessage isWhite={isWhite}>
+          {contents.productMessage[0]}
           <br />
-          Evolution
+          {contents.productMessage[1]}
           <br />
-          of Speech.
+          {contents.productMessage[2]}
         </ProductMessage>
       </ProductSection>
 
