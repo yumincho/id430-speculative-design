@@ -10,6 +10,8 @@ import {
   TextHighlight,
   TextTag,
   AnimatedNumber,
+  TextSubHead,
+  TextDescription,
 } from "../../components/common";
 import { useState, useEffect } from "react";
 
@@ -32,7 +34,7 @@ const footstepData = [
     year: "2047",
     title: "🏛 세계지식포럼 기술 혁신 선정",
     description:
-      "정책·토론·공공소통 전반에 도입. 사고 전달 정확도 43.7배 향상.",
+      "정책·토론·공공소통 전반에 도입.\n사고 전달 정확도 43.7배 향상.",
     image: "https://placehold.co/400x200?text=2047",
   },
   {
@@ -44,7 +46,8 @@ const footstepData = [
   {
     year: "2051~2053",
     title: "💰 132조 원 규모 글로벌 공동 개발",
-    description: "72개국과 공동 연구. 차세대 표현 인프라 구축 프로젝트 본격화.",
+    description:
+      "72개국과 공동 연구.\n차세대 표현 인프라 구축 프로젝트 본격화.",
     image: "https://placehold.co/400x200?text=2051-2053",
   },
   {
@@ -57,12 +60,12 @@ const footstepData = [
     year: "2053",
     title: "🧩 WHO 치료 프로토콜 지정",
     description:
-      "인지·언어 불안장애 치료에 활용. 비판적 사고 훈련 효과 74.8배 상승.",
+      "인지·언어 불안장애 치료에 활용.\n비판적 사고 훈련 효과 74.8배 상승.",
     image: "https://placehold.co/400x200?text=2053",
   },
   {
     year: "2055",
-    title: "🪶 도입국 112개국, 누적 사용자 78억 명 돌파",
+    title: "🪶 도입국 112개국,\n누적 사용자 78억 명 돌파",
     description: "표현력 진화의 표준으로 자리잡음",
     image: "https://placehold.co/400x200?text=2055",
   },
@@ -206,10 +209,10 @@ const AnimatedCounter: React.FC<{ children: string }> = ({ children }) => {
 export default function History() {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
@@ -288,9 +291,11 @@ export default function History() {
             {footstepData.map((item, index) => (
               <CarouselItem key={index}>
                 <CarouselText>
-                  <Year>{item.year}</Year>
-                  <ItemTitle>{item.title}</ItemTitle>
-                  <ItemDescription>{item.description}</ItemDescription>
+                  <TextTag>{item.year}</TextTag>
+                  <TextBody align="left">{item.title}</TextBody>
+                  <TextDescription align="left">
+                    {item.description}
+                  </TextDescription>
                 </CarouselText>
                 <CarouselImage src={item.image} alt={item.title} />
               </CarouselItem>
@@ -345,16 +350,22 @@ const SectionHead = styled.div`
 
 const CarouselContainer = styled.div`
   width: 100%;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledSlider = styled(Slider)`
+  .slick-dots {
+    bottom: -40px; // Move dots down by 40px
+  }
+
   .slick-dots li button:before {
     color: ${({ theme }) => theme.brandColor};
   }
+
   .slick-dots li.slick-active button:before {
     color: ${({ theme }) => theme.brandColor};
   }
+
   .slick-prev:before,
   .slick-next:before {
     color: ${({ theme }) => theme.brandColor};
@@ -366,14 +377,16 @@ const CarouselItem = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 8px;
+  background: ${({ theme }) => theme.background};
+
   height: 400px;
-  max-width: 320px;
+
   overflow: hidden;
   position: relative;
   transition: box-shadow 0.3s, transform 0.3s;
   z-index: 1;
+
+  cursor: pointer;
 
   &:hover {
     transform: scale(102%);
@@ -382,39 +395,21 @@ const CarouselItem = styled.div`
 `;
 
 const CarouselText = styled.div`
-  padding: 1.5rem 1.2rem 1rem 1.2rem;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.95) 80%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.3rem;
 `;
 
 const CarouselImage = styled.img`
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-`;
-
-const Year = styled.div`
-  font-size: 24px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.brandColor};
-  margin-bottom: 0.5rem;
-`;
-
-const ItemTitle = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 1rem;
-`;
-
-const ItemDescription = styled.div`
-  font-size: 16px;
-  line-height: 1.5;
-  color: #666;
 `;
 
 const ImpactCardGrid = styled.div`

@@ -87,6 +87,19 @@ export const TextBody = styled.div<{ align?: "center" | "left" | "right" }>`
   text-align: ${({ align }) => align ?? "center"};
   line-height: 1.6;
   white-space: pre-line;
+  word-break: keep-all;
+`;
+
+export const TextDescription = styled.div<{
+  align?: "center" | "left" | "right";
+}>`
+  color: ${({ theme }) => theme.text};
+  font-size: 16px;
+  font-weight: 500;
+  text-align: ${({ align }) => align ?? "center"};
+  line-height: 1.6;
+  white-space: pre-line;
+  word-break: keep-all;
 `;
 
 export const TextTag = styled.div`
