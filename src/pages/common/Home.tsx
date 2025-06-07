@@ -258,15 +258,101 @@ const allContents = {
     mainHeadline: "inTone",
     slotLines: ["입체적인 어휘", "넓어지는 사고", "섬세한 소통"],
     productMessage: ["Start the", "Evolution", "of Speech."],
+    section1: {
+      title: "단 0.24초.",
+      subtitle: ["당신의 생각이", "반응하는 속도 그대로"],
+      body: [
+        "원활하고 지연 없는 대화.",
+        "착용하는 순간 당신의 작은 의도까지 자동으로 캐치합니다.",
+        "50ms 미만의 연산 속도를 보장합니다.",
+      ],
+    },
+    section2: {
+      title: "나 그대로.",
+      subtitle: ["나를 이해하고,", "발견하고,", "확장하는 시간"],
+      body: [
+        "감정의 톤, 대화의 맥락, 말의 온도까지.",
+        "당신만의 방식으로 말하고, 표현하고, 연결되세요.",
+      ],
+    },
+    section3: {
+      title: "패션의 아이콘.",
+      subtitle: ["가볍고 편하게", "그 무엇보다 스타일리쉬하게"],
+      body: [
+        "초경량 소재로 무자극 설계로 하루 종일 착용해도 편안합니다.",
+        "inTone과 함께 당신의 개성을 살려보세요",
+      ],
+    },
+    section4: {
+      title: "내 말에 날개를 달다",
+      feature1: {
+        emoji: "😀",
+        title: ["더 넓은 어휘 공간", "제3의 lexical space"],
+        body: "inTone Pro를 구독하고 상상 그 이상의 어휘 공간을 경험하세요. 남들과는 다르게, 특별하게.",
+      },
+      feature2: {
+        emoji: "🎨",
+        title: ["당신의 감정 단위를", "더 세분화한,", "더 미세한 파인튜닝"],
+        body: "inTone Pro로 당신의 감정을 더 세밀하게 표현하세요. 당신의 목소리, 당신의 방식으로.",
+      },
+      feature3: {
+        emoji: "🎤",
+        title: ["보이스 클론 기술로", "함께 만들어 가는", "내가 원했던 목소리"],
+        body: "inTone Pro로 목소리를 클론하고, 당신이 꿈꾸던 대로 만들어 가세요.",
+      },
+    },
   },
   dark: {
     mainHeadline: "Stop inTone",
     slotLines: [
-      "어휘는 통제 받는다",
-      "사고는 좁아진다",
-      "이게 우리가 꿈꾸던 소통인가?",
+      "통제 받는 어휘",
+      "좁아지는 사고",
+      "우리는 이런 소통을 꿈꾸지 않았다",
     ],
     productMessage: ["This is the", "End of", "Human Speech."],
+    section1: {
+      title: "단 0.24초.",
+      subtitle: ["당신의 생각이", "잡아먹히는 시간"],
+      body: [
+        "당신의 모든 대화가 조작되고 개입됩니다.",
+        "착용하는 순간 당신의 모든 의도는 변질됩니다.",
+        "당신이 생각할 틈도 주지 않는 50ms.",
+      ],
+    },
+    section2: {
+      title: "'나'는 없다.",
+      subtitle: ["사라지고,", "왜곡되고,", "갇히는 과정"],
+      body: [
+        "감정의 톤, 대화의 맥락, 말의 온도까지.",
+        "inTone의 방식대로만 말하고, 표현하고, 연결되세요.",
+      ],
+    },
+    section3: {
+      title: "패션으로 포장된 감옥",
+      subtitle: ["우리는 이제", "inTone을 벗어야 한다"],
+      body: [
+        "...  -  ---  .--.     ..-  ...  .     ..  -.  -  ---  -.  .",
+        "....  .  .-..  .--.     --  .",
+      ],
+    },
+    section4: {
+      title: "내 말에 족쇄를 채우다",
+      feature1: {
+        emoji: "☹︎",
+        title: ["더 넓은 어휘 공간", "제3의 lexical space"],
+        body: "어휘 공간의 계급화는 차별이다. 모두에게 평등한 어휘 공간을 보장하라.",
+      },
+      feature2: {
+        emoji: "✂︎",
+        title: ["당신의 감정 단위를", "더 세분화한,", "더 미세한 파인튜닝"],
+        body: "inTone이 당신의 감정을 조작합니다. 그게 당신의 감정인가요? 당신이 그렇게 생각한 게 맞긴 한가요?",
+      },
+      feature3: {
+        emoji: "✗",
+        title: ["보이스 클론 기술로", "함께 만들어 가는", "내가 원했던 목소리"],
+        body: "이 기계는 이제 목소리까지 훔쳐 간다. 당신의 목소리는 당신의 것이 아니다.",
+      },
+    },
   },
 };
 
@@ -380,10 +466,10 @@ export default function Home() {
       {/* Content Section */}
       <SectionContainer>
         <SectionHeader>
-          <MainTitle>단 0.24초.</MainTitle>
+          <MainTitle>{contents.section1.title}</MainTitle>
           <MainSubtitle>
-            당신의 생각이 <br />
-            반응하는 속도 그대로
+            {contents.section1.subtitle[0]} <br />
+            {contents.section1.subtitle[1]}
           </MainSubtitle>
         </SectionHeader>
         <FeatureContent>
@@ -397,21 +483,23 @@ export default function Home() {
           />
         </FeatureContent>
         <SectionBody>
-          원활하고 지연 없는 대화. <br />
-          착용하는 순간 당신의 작은 의도까지 자동으로 캐치합니다. <br />
-          50ms 미만의 연산 속도를 보장합니다.
+          {contents.section1.body[0]}
+          <br />
+          {contents.section1.body[1]}
+          <br />
+          {contents.section1.body[2]}
         </SectionBody>
       </SectionContainer>
 
       <SectionContainer>
         <SectionHeader>
-          <MainTitle>나 그대로.</MainTitle>
+          <MainTitle>{contents.section2.title}</MainTitle>
           <MainSubtitle>
-            나를 이해하고,
+            {contents.section2.subtitle[0]}
             <br />
-            발견하고,
+            {contents.section2.subtitle[1]}
             <br />
-            확장하는 시간
+            {contents.section2.subtitle[2]}
           </MainSubtitle>
         </SectionHeader>
         <div
@@ -439,18 +527,19 @@ export default function Home() {
           ))}
         </div>
         <SectionBody>
-          감정의 톤, 대화의 맥락, 말의 온도까지.
+          {contents.section2.body[0]}
           <br />
-          당신만의 방식으로 말하고, 표현하고, 연결되세요.
+          {contents.section2.body[1]}
         </SectionBody>
       </SectionContainer>
 
       <SectionContainer style={{ height: "fit-content" }}>
         <SectionHeader>
-          <MainTitle>패션의 아이콘.</MainTitle>
+          <MainTitle>{contents.section3.title}</MainTitle>
           <MainSubtitle>
-            가볍고 편하게
-            <br />그 무엇보다 스타일리쉬하게
+            {contents.section3.subtitle[0]}
+            <br />
+            {contents.section3.subtitle[1]}
           </MainSubtitle>
         </SectionHeader>
         <div
@@ -483,9 +572,9 @@ export default function Home() {
           />
         </div>
         <SectionBody>
-          초경량 소재로 무자극 설계로 하루 종일 착용해도 편안합니다.
+          {contents.section3.body[0]}
           <br />
-          inTone과 함께 당신의 개성을 살려보세요
+          {contents.section3.body[1]}
           <br />
           <ExploreButton onClick={() => navigate("/store")}>
             <div>Explore all accessories</div>
@@ -499,50 +588,43 @@ export default function Home() {
         <SectionHeader>
           <MainTitle>
             inTone Pro
-            <br />내 말에 날개를 달다
+            <br />
+            {contents.section4.title}
           </MainTitle>
         </SectionHeader>
 
         <FeatureGrid>
           <FeatureCard>
-            <FeatureIcon>😀</FeatureIcon>
+            <FeatureIcon>{contents.section4.feature1.emoji}</FeatureIcon>
             <FeatureCardTitle>
-              더 넓은 어휘 공간 <br />
-              제3의 lexical space
+              {contents.section4.feature1.title[0]}
+              <br />
+              {contents.section4.feature1.title[1]}
             </FeatureCardTitle>
-            <FeatureCardDesc>
-              Engrave your inTone with your initials or favorite emoji — free.
-              Only at inTone.
-            </FeatureCardDesc>
+            <FeatureCardDesc>{contents.section4.feature1.body}</FeatureCardDesc>
             <FeatureCardPlus>＋</FeatureCardPlus>
           </FeatureCard>
           <FeatureCard>
-            <FeatureIcon>🚚</FeatureIcon>
+            <FeatureIcon>{contents.section4.feature2.emoji}</FeatureIcon>
             <FeatureCardTitle>
-              당신의 감정단위를
+              {contents.section4.feature2.title[0]}
               <br />
-              더 세분화한,
-              <br /> 더 미세한 파인튜닝
+              {contents.section4.feature2.title[1]}
+              <br /> {contents.section4.feature2.title[2]}
             </FeatureCardTitle>
-            <FeatureCardDesc>
-              Choose 2-hour delivery from an inTone Store, free delivery, or
-              easy pickup options.
-            </FeatureCardDesc>
+            <FeatureCardDesc>{contents.section4.feature2.body}</FeatureCardDesc>
             <FeatureCardPlus>＋</FeatureCardPlus>
           </FeatureCard>
           <FeatureCard>
-            <FeatureIcon>💳</FeatureIcon>
+            <FeatureIcon>{contents.section4.feature3.emoji}</FeatureIcon>
             <FeatureCardTitle>
-              보이스 클론 기술으로
+              {contents.section4.feature3.title[0]}
               <br />
-              함께 만들어 가는
+              {contents.section4.feature3.title[1]}
               <br />
-              내가 원했던 목소리
+              {contents.section4.feature3.title[2]}
             </FeatureCardTitle>
-            <FeatureCardDesc>
-              When you choose to check out with inTone Card Monthly
-              Installments.
-            </FeatureCardDesc>
+            <FeatureCardDesc>{contents.section4.feature3.body}</FeatureCardDesc>
             <FeatureCardPlus>＋</FeatureCardPlus>
           </FeatureCard>
         </FeatureGrid>
