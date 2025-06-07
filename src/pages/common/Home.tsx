@@ -41,7 +41,7 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 420px;
   max-width: 90vw;
-  margin-bottom: 2.5rem;
+  margin: 2.5rem 0;
 `;
 
 const MainHeadline = styled.h1`
@@ -56,14 +56,16 @@ const MainHeadline = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.text};
   margin: 0;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
 `;
 
 const MainImage = styled.img`
+  position: relative;
   width: 100%;
   height: auto;
   display: block;
+  z-index: 2;
 `;
 
 const MainTitle = styled.div<{ center?: boolean }>`
@@ -179,7 +181,7 @@ const FeatureContent = styled.div`
 
   display: flex;
   justify-content: space-between;
-  background-color: #f2eff1;
+  background-color: #f3f3f3;
 `;
 
 const FeatureGrid = styled.div`
@@ -357,9 +359,13 @@ export default function Home() {
           </MainSubtitle>
         </SectionHeader>
         <FeatureContent>
-          <img
-            style={{ width: "50%", height: "auto", objectFit: "cover" }}
-            src="./imgs/w-main-feature.png"
+          <video
+            style={{ objectFit: "cover" }}
+            src="./videos/w-main-feature.mp4"
+            width="500px"
+            autoPlay
+            muted
+            loop
           />
         </FeatureContent>
         <SectionBody>
