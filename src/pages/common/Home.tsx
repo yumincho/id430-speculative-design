@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 const mainTeaserImageSrc = "./imgs/w-main-teaser.png";
 const productImageSrc = "./imgs/w-main-product.png";
 
+const mainTeaserDarkImageSrc = "./imgs/d-main-teaser.png";
+
 // Manage the image list as a JSON-like array here:
 const identityImageList = [
   "./imgs/w-main-identity1.png",
@@ -19,14 +21,17 @@ const identityImageList = [
   "./imgs/w-main-identity6.png",
   "./imgs/w-main-identity7.png",
   "./imgs/w-main-identity8.png",
-  "./imgs/w-main-identity1.png",
-  "./imgs/w-main-identity2.png",
-  "./imgs/w-main-identity3.png",
-  "./imgs/w-main-identity4.png",
-  "./imgs/w-main-identity5.png",
-  "./imgs/w-main-identity6.png",
-  "./imgs/w-main-identity7.png",
-  "./imgs/w-main-identity8.png",
+];
+
+const identityImageListDark = [
+  "./imgs/d-main-identity1.png",
+  "./imgs/d-main-identity2.png",
+  "./imgs/d-main-identity3.png",
+  "./imgs/d-main-identity4.png",
+  "./imgs/d-main-identity5.png",
+  "./imgs/d-main-identity6.png",
+  "./imgs/d-main-identity7.png",
+  "./imgs/d-main-identity8.png",
 ];
 
 const FirstSection = styled.section`
@@ -39,9 +44,9 @@ const FirstSection = styled.section`
   padding-top: 2.5rem;
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<{ isWhite?: boolean }>`
   position: relative;
-  width: 420px;
+  width: ${({ isWhite }) => (isWhite ? "420px" : "600px")};
   max-width: 90vw;
   margin: 2.5rem 0;
 `;
@@ -440,10 +445,10 @@ export default function Home() {
   return (
     <>
       <FirstSection>
-        <ImageWrapper>
+        <ImageWrapper isWhite={isWhite}>
           {!isWhite && XMark}
           <MainHeadline>{contents.mainHeadline}</MainHeadline>
-          <MainImage src={mainTeaserImageSrc} alt="inTone main visual" />
+          <MainImage src={isWhite ? mainTeaserImageSrc : mainTeaserDarkImageSrc} alt="inTone main visual" />
         </ImageWrapper>
         <TextHead align="center">
           <SlotLines />
@@ -510,7 +515,24 @@ export default function Home() {
             overflow: "hidden",
           }}
         >
-          {identityImageList.map((src, idx) => (
+          {isWhite ? 
+          identityImageList.map((src, idx) => (
+            <div
+              key={idx}
+              className="keen-slider__slide"
+              style={{
+                width: "300px",
+                height: "450px",
+                flexShrink: 0,
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              <IdentityImg src={src} alt={`person${(idx % src.length) + 1}`} />
+            </div>
+          )) 
+          : 
+          identityImageListDark.map((src, idx) => (
             <div
               key={idx}
               className="keen-slider__slide"
@@ -555,7 +577,7 @@ export default function Home() {
           }}
         >
           <img
-            src="./imgs/w-main-style1.png"
+            src={isWhite ? "./imgs/w-main-style1.png" : "./imgs/d-main-style1.png"}
             alt="style1"
             style={{
               width: "30%",
@@ -564,7 +586,7 @@ export default function Home() {
             }}
           />
           <img
-            src="./imgs/w-main-style2.png"
+            src={isWhite ? "./imgs/w-main-style2.png" : "./imgs/d-main-style2.png"}
             alt="style2"
             style={{
               width: "30%",
