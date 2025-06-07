@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useRef } from "react";
@@ -35,7 +35,6 @@ const FirstSection = styled.section`
   justify-content: flex-start;
   min-height: 100vh;
   padding-top: 2.5rem;
-  background: #fff;
 `;
 
 const ImageWrapper = styled.div`
@@ -194,7 +193,7 @@ const FeatureGrid = styled.div`
 `;
 
 const FeatureCard = styled.div`
-  background: #fff;
+  background: ${({ theme }) => theme.backgroundSecondary};
   border-radius: 1rem;
 
   padding: 2.5rem 2rem 2rem 2rem;
@@ -220,7 +219,7 @@ const FeatureCardTitle = styled.div`
 
 const FeatureCardDesc = styled.div`
   font-size: 1.1rem;
-  color: #444;
+  color: ${({ theme }) => theme.text};
   margin-bottom: 1.5rem;
 `;
 
@@ -229,7 +228,7 @@ const FeatureCardPlus = styled.div`
   right: 1.5rem;
   bottom: 1.5rem;
   font-size: 1.7rem;
-  color: #bbb;
+  color: ${({ theme }) => theme.button};
 `;
 
 const ExploreButton = styled.div`
@@ -254,6 +253,8 @@ const SlotLines: React.FC = () => {
   const slotLines = ["입체적인 어휘", "넓어지는 사고", "섬세한 소통"];
   const [index, setIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+
+  const theme = useTheme();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -284,7 +285,7 @@ const SlotLines: React.FC = () => {
           opacity: animating ? 0 : 1,
           fontSize: "60px",
           fontWeight: 700,
-          color: "#222",
+          color: theme.text,
           lineHeight: 1.3,
           whiteSpace: "pre-line",
         }}
@@ -460,9 +461,7 @@ export default function Home() {
       </SectionContainer>
 
       {/* New Feature Grid Section */}
-      <SectionContainer
-        style={{ backgroundColor: "#F2EFF1", justifyContent: "flex-start" }}
-      >
+      <SectionContainer style={{ justifyContent: "flex-start" }}>
         <SectionHeader>
           <MainTitle>
             inTone Pro
