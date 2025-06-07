@@ -18,7 +18,7 @@ export const darkTheme = {
   mode: "dark" as ThemeMode,
   brandColor: "rgb(255, 90, 0)",
   text: "#ffffff",
-  textRed: "#ff1744",
+  textRed: "#ff0000",
   textReverse: "#000000",
   quote: "#cccccc",
   button: "#333333",
