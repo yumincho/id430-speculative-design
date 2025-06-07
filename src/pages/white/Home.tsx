@@ -3,6 +3,12 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useRef } from "react";
 import React, { useState } from "react";
+import {
+  TextHead,
+  TextBody,
+  TextSubHead,
+  TextButton,
+} from "../../components/common";
 
 const mainTeaserImageSrc = "./imgs/w-main-teaser.png";
 const productImageSrc = "./imgs/w-main-product.png";
@@ -65,24 +71,6 @@ const MainImage = styled.img`
   width: 100%;
   height: auto;
   display: block;
-`;
-
-const MainTitle = styled.div<{ center?: boolean }>`
-  font-size: 60px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.text};
-  text-align: ${({ center }) => (center ? "center" : "left")};
-  line-height: 1.3;
-  white-space: pre-line;
-`;
-
-const MainSubtitle = styled.div`
-  font-size: 28px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.text};
-  text-align: right;
-  line-height: 1.3;
-  white-space: pre-line;
 `;
 
 const ProductSection = styled.section`
@@ -153,15 +141,14 @@ const SectionHeader = styled.div`
 const SectionBody = styled.div`
   width: 100%;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   box-sizing: border-box;
   padding: 2rem 2rem 2.5rem 2rem;
   margin-bottom: 4rem;
-
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  line-height: 1.6;
-  color: ${({ theme }) => theme.text};
 `;
 
 const IdentityImg = styled.img`
@@ -230,24 +217,6 @@ const FeatureCardPlus = styled.div`
   bottom: 1.5rem;
   font-size: 1.7rem;
   color: #bbb;
-`;
-
-const ExploreButton = styled.div`
-  color: ${({ theme }) => theme.brandColor};
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3em;
-  margin-top: 1.5rem;
-  transition: text-decoration 0.2s;
-
-  &:hover {
-    & > div {
-      text-decoration: underline;
-    }
-  }
 `;
 
 const SlotLines: React.FC = () => {
@@ -330,9 +299,9 @@ export default function Home() {
           <MainHeadline>inTone</MainHeadline>
           <MainImage src={mainTeaserImageSrc} alt="inTone main visual" />
         </ImageWrapper>
-        <MainTitle center={true}>
+        <TextHead align="center">
           <SlotLines />
-        </MainTitle>
+        </TextHead>
       </FirstSection>
       <ProductSection>
         <ProductImage src={productImageSrc} alt="inTone product" />
@@ -349,11 +318,11 @@ export default function Home() {
       {/* Content Section */}
       <SectionContainer>
         <SectionHeader>
-          <MainTitle>단 0.24초.</MainTitle>
-          <MainSubtitle>
+          <TextHead>단 0.24초.</TextHead>
+          <TextSubHead>
             당신의 생각이 <br />
             반응하는 속도 그대로
-          </MainSubtitle>
+          </TextSubHead>
         </SectionHeader>
         <FeatureContent>
           <img
@@ -362,22 +331,24 @@ export default function Home() {
           />
         </FeatureContent>
         <SectionBody>
-          원활하고 지연 없는 대화. <br />
-          착용하는 순간 당신의 작은 의도까지 자동으로 캐치합니다. <br />
-          50ms 미만의 연산 속도를 보장합니다.
+          <TextBody>
+            원활하고 지연 없는 대화. <br />
+            착용하는 순간 당신의 작은 의도까지 자동으로 캐치합니다. <br />
+            50ms 미만의 연산 속도를 보장합니다.
+          </TextBody>
         </SectionBody>
       </SectionContainer>
 
       <SectionContainer>
         <SectionHeader>
-          <MainTitle>나 그대로.</MainTitle>
-          <MainSubtitle>
+          <TextHead>나 그대로.</TextHead>
+          <TextSubHead>
             나를 이해하고,
             <br />
             발견하고,
             <br />
             확장하는 시간
-          </MainSubtitle>
+          </TextSubHead>
         </SectionHeader>
         <div
           ref={sliderRef}
@@ -404,19 +375,21 @@ export default function Home() {
           ))}
         </div>
         <SectionBody>
-          감정의 톤, 대화의 맥락, 말의 온도까지.
-          <br />
-          당신만의 방식으로 말하고, 표현하고, 연결되세요.
+          <TextBody>
+            감정의 톤, 대화의 맥락, 말의 온도까지.
+            <br />
+            당신만의 방식으로 말하고, 표현하고, 연결되세요.
+          </TextBody>
         </SectionBody>
       </SectionContainer>
 
       <SectionContainer style={{ height: "fit-content" }}>
         <SectionHeader>
-          <MainTitle>패션의 아이콘.</MainTitle>
-          <MainSubtitle>
+          <TextHead>패션의 아이콘.</TextHead>
+          <TextSubHead>
             가볍고 편하게
             <br />그 무엇보다 스타일리쉬하게
-          </MainSubtitle>
+          </TextSubHead>
         </SectionHeader>
         <div
           style={{
@@ -448,14 +421,13 @@ export default function Home() {
           />
         </div>
         <SectionBody>
-          초경량 소재로 무자극 설계로 하루 종일 착용해도 편안합니다.
-          <br />
-          inTone과 함께 당신의 개성을 살려보세요
-          <br />
-          <ExploreButton>
-            <div>Explore all accessories</div>
-            <span style={{ fontSize: "1.2em" }}>&#8250;</span>
-          </ExploreButton>
+          <TextBody>
+            초경량 소재로 무자극 설계로 하루 종일 착용해도 편안합니다.
+            <br />
+            inTone과 함께 당신의 개성을 살려보세요
+            <br />
+          </TextBody>
+          <TextButton>{"Explore all accessories >"}</TextButton>
         </SectionBody>
       </SectionContainer>
 
@@ -464,10 +436,10 @@ export default function Home() {
         style={{ backgroundColor: "#F2EFF1", justifyContent: "flex-start" }}
       >
         <SectionHeader>
-          <MainTitle>
+          <TextHead>
             inTone Pro
             <br />내 말에 날개를 달다
-          </MainTitle>
+          </TextHead>
         </SectionHeader>
 
         <FeatureGrid>

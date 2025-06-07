@@ -43,7 +43,7 @@ export default function Navigation() {
     <Nav>
       <NavList>
         <NavItem>
-          <NavLink to={"/home"}>Intone</NavLink>
+          <NavLink to={"/home"}>inTone</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to={"store"}>Store</NavLink>

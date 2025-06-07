@@ -59,3 +59,47 @@ export const H3 = styled.h3`
   font-size: 18px;
   line-height: 1.4;
 `;
+
+/* Text components */
+
+export const TextHead = styled.div<{ align?: "center" | "left" | "right" }>`
+  color: ${({ theme }) => theme.text};
+  font-size: 60px;
+  font-weight: 700;
+  text-align: ${({ align }) => align ?? "left"};
+  line-height: 1.3;
+  white-space: pre-line;
+`;
+
+export const TextSubHead = styled.div<{ align?: "center" | "left" | "right" }>`
+  color: ${({ theme }) => theme.text};
+  font-size: 28px;
+  font-weight: 700;
+  text-align: ${({ align }) => align ?? "right"};
+  line-height: 1.3;
+  white-space: pre-line;
+`;
+
+export const TextBody = styled.div<{ align?: "center" | "left" | "right" }>`
+  color: ${({ theme }) => theme.text};
+  font-size: 20px;
+  font-weight: 600;
+  text-align: ${({ align }) => align ?? "center"};
+  line-height: 1.6;
+  white-space: pre-line;
+`;
+
+export const TextButton = styled.div`
+  color: ${({ theme }) => theme.brandColor};
+  font-size: 18px;
+  font-weight: 500;
+
+  margin-top: 1.5rem;
+  transition: text-decoration 0.2s;
+
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;

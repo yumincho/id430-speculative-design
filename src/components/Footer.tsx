@@ -12,7 +12,7 @@ const FooterContainer = styled.div`
 export default function Footer() {
   return (
     <FooterContainer>
-      © {new Date().getFullYear()} inTone. All rights reserved.
+      © {new Date().getFullYear() + 30} inTone. All rights reserved.
     </FooterContainer>
   );
 }

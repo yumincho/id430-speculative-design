@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
+import { TextBody, TextHead } from "../../components/common";
 
 const footstepData = [
   {
@@ -174,7 +175,7 @@ export default function History() {
           <TypeAnimation
             sequence={[
               1000, // 1 second delay before starting
-              "신인류의 언어,\nIntone",
+              "신인류의 언어,\ninTone",
               1000,
             ]}
             wrapper="div"
@@ -188,10 +189,10 @@ export default function History() {
       {/* Vision Section */}
       <VisionSection>
         <VisionText>
-          <SectionTag>Our Vision</SectionTag>
-          <SectionTitle>우리는 더 유능해졌습니다.</SectionTitle>
-          <SectionBody>{`발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`}</SectionBody>
-          <SectionBody>{`InTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\nInTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다. 고차원의 소통 사회가 실현된 것입니다.\n이제 우리는,언어를 통해 사고하고, 사고를 통해 성장하는 시대에 진입했습니다.`}</SectionBody>
+          <SectionTag>Vision</SectionTag>
+          <TextHead>우리는 더 유능해졌습니다.</TextHead>
+          <TextBody>{`발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`}</TextBody>
+          <TextBody>{`InTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\nInTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다. 고차원의 소통 사회가 실현된 것입니다.\n이제 우리는,언어를 통해 사고하고, 사고를 통해 성장하는 시대에 진입했습니다.`}</TextBody>
         </VisionText>
         <VisionImageWrapper>
           <VisionImage
@@ -207,9 +208,9 @@ export default function History() {
 
       {/* Footstep Section */}
       <Section>
-        <SectionTag>Our Footstep</SectionTag>
-        <SectionTitle>세상을 바꾼 언어 인터페이스의 등장.</SectionTitle>
-        <SectionBody>{`우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도, 30억 1,200만 명이 intone을 통해 말하고 있습니다.`}</SectionBody>
+        <SectionTag>Footstep</SectionTag>
+        <TextHead>세상을 바꾼 언어 인터페이스의 등장.</TextHead>
+        <TextBody>{`우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도, 30억 1,200만 명이 intone을 통해 말하고 있습니다.`}</TextBody>
 
         <CarouselContainer>
           <StyledSlider {...settings}>
@@ -229,8 +230,8 @@ export default function History() {
 
       {/* Impact Section */}
       <Section>
-        <SectionTag>Our Impact</SectionTag>
-        <SectionTitle>각자의 말, 각자의 방식, 각자의 목소리로</SectionTitle>
+        <SectionTag>Impact</SectionTag>
+        <TextHead>각자의 말, 각자의 방식, 각자의 목소리로</TextHead>
         <ImpactCardGrid>
           {impactCards.map((card, idx) => (
             <ImpactCard key={idx}>
@@ -241,7 +242,7 @@ export default function History() {
             </ImpactCard>
           ))}
         </ImpactCardGrid>
-        <SectionBody>{`우리는 이제 서로를 더 잘 이해하고,\n각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.\n우리는 더 이상 실패하지 않습니다.\n언어는 인류의 고도화된 지능과 진화의 산물이며,\n모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.`}</SectionBody>
+        <TextBody>{`우리는 이제 서로를 더 잘 이해하고,\n각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.\n우리는 더 이상 실패하지 않습니다.\n언어는 인류의 고도화된 지능과 진화의 산물이며,\n모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.`}</TextBody>
       </Section>
 
       {/* Outro Section */}
@@ -272,19 +273,6 @@ const SectionHead = styled.div`
   line-height: 1.2;
   text-align: center;
   min-height: 140px; /* Added to prevent layout shift during typing */
-`;
-
-const SectionTitle = styled.div`
-  font-size: 56px;
-  font-weight: 700;
-  white-space: pre-wrap;
-`;
-
-const SectionBody = styled.p`
-  font-size: 18px;
-  white-space: pre-wrap;
-  font-weight: 600;
-  line-height: 1.5;
 `;
 
 const CarouselContainer = styled.div`
