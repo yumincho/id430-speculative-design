@@ -83,15 +83,17 @@ const Wrapper = styled.div`
 `;
 
 const Section = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
+  width: 100vw;
+
+  box-sizing: border-box;
+  padding: 0 15rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
   gap: 2rem;
-  box-sizing: border-box;
 
   @media (max-width: 800px) {
     max-width: 98vw;
@@ -99,21 +101,10 @@ const Section = styled.div`
   }
 `;
 
-const VisionSection = styled(Section)`
-  flex-direction: row;
-  align-items: center;
-  gap: 2rem;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-`;
-
-const VisionText = styled.div`
-  flex: 2;
-`;
-
 const VisionImageWrapper = styled.div`
+  position: absolute;
+  right: 0;
+
   flex: 1.2;
   display: flex;
   justify-content: center;
@@ -123,7 +114,6 @@ const VisionImageWrapper = styled.div`
 const VisionImage = styled(motion.img)`
   width: 320px;
   max-width: 100%;
-  border-radius: 8px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   @media (max-width: 900px) {
     width: 100%;
@@ -187,13 +177,12 @@ export default function History() {
       </Section>
 
       {/* Vision Section */}
-      <VisionSection>
-        <VisionText>
-          <SectionTag>Vision</SectionTag>
-          <TextHead>우리는 더 유능해졌습니다.</TextHead>
-          <TextBody>{`발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`}</TextBody>
-          <TextBody>{`InTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\nInTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다. 고차원의 소통 사회가 실현된 것입니다.\n이제 우리는,언어를 통해 사고하고, 사고를 통해 성장하는 시대에 진입했습니다.`}</TextBody>
-        </VisionText>
+      <Section>
+        <SectionTag>Vision</SectionTag>
+        <TextHead>우리는 더 유능해졌습니다.</TextHead>
+        <TextBody>{`발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`}</TextBody>
+        <TextBody>{`InTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\nInTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다. 고차원의 소통 사회가 실현된 것입니다.\n이제 우리는,언어를 통해 사고하고, 사고를 통해 성장하는 시대에 진입했습니다.`}</TextBody>
+
         <VisionImageWrapper>
           <VisionImage
             src="https://placehold.co/400x500?text=Vision+Image"
@@ -204,7 +193,7 @@ export default function History() {
             viewport={{ once: true, amount: 0.5 }}
           />
         </VisionImageWrapper>
-      </VisionSection>
+      </Section>
 
       {/* Footstep Section */}
       <Section>
