@@ -1,20 +1,15 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useTheme, type DefaultTheme } from "styled-components";
-
-// White mode pages
-import History from "../pages/white/History";
-
-// Dark mode pages
-import HistoryDark from "../pages/dark/History";
+// import { useTheme, type DefaultTheme } from "styled-components";
 
 // Common pages
 import Home from "../pages/common/Home";
 import Article from "../pages/common/Article";
 import Stories from "../pages/common/Stories";
 import Store from "../pages/common/Store";
+import History from "../pages/common/History";
 
 export default function AppRouter() {
-  const { mode }: DefaultTheme = useTheme();
+  // const { mode }: DefaultTheme = useTheme();
 
   return (
     <Routes>
@@ -24,10 +19,7 @@ export default function AppRouter() {
       {/* Routes */}
       <Route path="/home" element={<Home />} />
       <Route path="/store" element={<Store />} />
-      <Route
-        path="/history"
-        element={mode === "white" ? <History /> : <HistoryDark />}
-      />
+      <Route path="/history" element={<History />} />
       <Route path="/stories" element={<Stories />} />
       <Route path="/stories/:id" element={<Article />} />
 

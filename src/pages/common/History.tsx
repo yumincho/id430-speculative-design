@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { TypeAnimation } from "react-type-animation";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,13 +7,13 @@ import {
   ImgWall,
   TextBody,
   TextHead,
-  TextHighlight,
+  // TextHighlight,
   TextTag,
-  AnimatedNumber,
+  // AnimatedNumber,
   TextDescription,
   TextSubHead,
 } from "../../components/common";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 const footstepData = [
   {
@@ -128,90 +128,151 @@ const SectionHeader = styled.div`
   gap: 0.8rem;
 `;
 
-const AnimatedCounter: React.FC<{ children: string }> = ({ children }) => {
-  // Parse the initial value to separate numbers and units
-  const parseValue = (value: string) => {
-    const match = value.match(/(\d+)억\s*(\d+)만\s*명/);
-    if (!match) return { billions: 30, millions: 1200 };
-    return {
-      billions: parseInt(match[1]),
-      millions: parseInt(match[2].replace(/,/g, "")),
-    };
-  };
+// const AnimatedCounter: React.FC<{ children: string }> = ({ children }) => {
+//   // Parse the initial value to separate numbers and units
+//   const parseValue = (value: string) => {
+//     const match = value.match(/(\d+)억\s*(\d+)만\s*명/);
+//     if (!match) return { billions: 30, millions: 1200 };
+//     return {
+//       billions: parseInt(match[1]),
+//       millions: parseInt(match[2].replace(/,/g, "")),
+//     };
+//   };
 
-  const [values, setValues] = useState(parseValue(children));
-  const [isAnimatingBillions, setIsAnimatingBillions] = useState(false);
-  const [isAnimatingMillions, setIsAnimatingMillions] = useState(false);
+//   const [values, setValues] = useState(parseValue(children));
+//   const [isAnimatingBillions, setIsAnimatingBillions] = useState(false);
+//   const [isAnimatingMillions, setIsAnimatingMillions] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Animate billions
-      setIsAnimatingBillions(true);
-      setTimeout(() => {
-        setValues((prev) => ({
-          ...prev,
-          billions: Math.floor(Math.random() * 10) + 30,
-        }));
-        setIsAnimatingBillions(false);
-      }, 300);
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       // Animate billions
+//       setIsAnimatingBillions(true);
+//       setTimeout(() => {
+//         setValues((prev) => ({
+//           ...prev,
+//           billions: Math.floor(Math.random() * 10) + 30,
+//         }));
+//         setIsAnimatingBillions(false);
+//       }, 300);
 
-      // Animate millions with a slight delay
-      setTimeout(() => {
-        setIsAnimatingMillions(true);
-        setTimeout(() => {
-          setValues((prev) => ({
-            ...prev,
-            millions: Math.floor(Math.random() * 10000),
-          }));
-          setIsAnimatingMillions(false);
-        }, 300);
-      }, 150);
-    }, 3000);
+//       // Animate millions with a slight delay
+//       setTimeout(() => {
+//         setIsAnimatingMillions(true);
+//         setTimeout(() => {
+//           setValues((prev) => ({
+//             ...prev,
+//             millions: Math.floor(Math.random() * 10000),
+//           }));
+//           setIsAnimatingMillions(false);
+//         }, 300);
+//       }, 150);
+//     }, 3000);
 
-    return () => clearInterval(interval);
-  }, []);
+//     return () => clearInterval(interval);
+//   }, []);
 
-  return (
-    <TextHighlight>
-      <AnimatedNumber
-        style={{
-          animation: isAnimatingBillions ? "none" : undefined,
-          width: "26px",
-        }}
-      >
-        {values.billions}
-      </AnimatedNumber>
-      {`억 `}
-      <AnimatedNumber
-        style={{
-          animation: isAnimatingMillions ? "none" : undefined,
-          width: "58px",
-        }}
-      >
-        {values.millions.toLocaleString()}
-      </AnimatedNumber>
-      {`만 명`}
-    </TextHighlight>
-  );
-};
+//   return (
+//     <TextHighlight>
+//       <AnimatedNumber
+//         style={{
+//           animation: isAnimatingBillions ? "none" : undefined,
+//           width: "26px",
+//         }}
+//       >
+//         {values.billions}
+//       </AnimatedNumber>
+//       {`억 `}
+//       <AnimatedNumber
+//         style={{
+//           animation: isAnimatingMillions ? "none" : undefined,
+//           width: "58px",
+//         }}
+//       >
+//         {values.millions.toLocaleString()}
+//       </AnimatedNumber>
+//       {`만 명`}
+//     </TextHighlight>
+//   );
+// };
 
-// First, let's create a new component for the alternating text
-const AlternatingText: React.FC = () => {
-  const words = ["실패", "오해", "대립", "분쟁", "왜곡"];
-  const [text, setText] = useState(0);
+// // First, let's create a new component for the alternating text
+// const AlternatingText: React.FC = () => {
+//   const words = ["실패", "오해", "대립", "분쟁", "왜곡"];
+//   const [text, setText] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setText((prev) => (prev === words.length - 1 ? 0 : prev + 1));
-    }, 2000); // Change every 2 seconds
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setText((prev) => (prev === words.length - 1 ? 0 : prev + 1));
+//     }, 2000); // Change every 2 seconds
 
-    return () => clearInterval(interval);
-  }, []);
+//     return () => clearInterval(interval);
+//   }, []);
 
-  return <TextHighlight>{words[text]}</TextHighlight>;
+//   return <TextHighlight>{words[text]}</TextHighlight>;
+// };
+
+const allContents = {
+  dark: {
+    intro: {
+      title: "신인류의 언어,\ninTone",
+    },
+    vision: {
+      tag: "Vision",
+      title: "우리는 더 유능해졌습니다.",
+      body1: `발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`,
+      body2: `inTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\ninTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다.\n고차원의 소통 사회가 실현된 것입니다.`,
+    },
+    footstep: {
+      tag: "Footstep",
+      title: "세상을 바꾼 언어 인터페이스의 등장.",
+      body: `우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도, 30억 1,200만 명이 intone을 통해 말하고 있습니다.`,
+      cards: footstepData,
+    },
+    impact: {
+      tag: "Impact",
+      title: "각자의 말, 각자의 방식, 각자의 목소리로",
+      cards: impactCards,
+      body: `우리는 이제 서로를 더 잘 이해하고, 각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.`,
+    },
+    outro: {
+      title: `우리는 더 이상 실패하지 않습니다.`,
+      subtitle: `언어는 인류의 고도화된 지능과 진화의 산물이며,\ninTone을 통해 모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.\ninTone. A new age of expression.`,
+    },
+  },
+  white: {
+    intro: {
+      title: "신인류의 언어,\ninTone",
+    },
+    vision: {
+      tag: "Vision",
+      title: "우리는 더 유능해졌습니다.",
+      body1: `발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, 말할수록 사고가 정제되고, 말할수록 사회가 지능화되는 환경에 살고 있습니다.`,
+      body2: `inTone은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\ninTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다.\n고차원의 소통 사회가 실현된 것입니다.`,
+    },
+    footstep: {
+      tag: "Footstep",
+      title: "세상을 바꾼 언어 인터페이스의 등장.",
+      body: `우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도, 30억 1,200만 명이 intone을 통해 말하고 있습니다.`,
+      cards: footstepData,
+    },
+    impact: {
+      tag: "Impact",
+      title: "각자의 말, 각자의 방식, 각자의 목소리로",
+      cards: impactCards,
+      body: `우리는 이제 서로를 더 잘 이해하고, 각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.`,
+    },
+    outro: {
+      title: `우리는 더 이상 실패하지 않습니다.`,
+      subtitle: `언어는 인류의 고도화된 지능과 진화의 산물이며,\ninTone을 통해 모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.\ninTone. A new age of expression.`,
+    },
+  },
 };
 
 export default function History() {
+  const theme = useTheme();
+  // const isWhite = theme.mode === "white";
+  const content = allContents[theme.mode];
+
   const settings = {
     dots: true,
     infinite: false,
@@ -243,11 +304,7 @@ export default function History() {
       <Section>
         <SectionHead>
           <TypeAnimation
-            sequence={[
-              1000, // 1 second delay before starting
-              "신인류의 언어,\ninTone",
-              1000,
-            ]}
+            sequence={[1000, content.intro.title, 1000]}
             wrapper="div"
             speed={30}
             cursor={true}
@@ -259,41 +316,28 @@ export default function History() {
       {/* Vision Section */}
       <Section margin={true}>
         <SectionHeader>
-          <TextTag>Vision</TextTag>
-          <TextHead align="center">우리는 더 유능해졌습니다.</TextHead>
+          <TextTag>{content.vision.tag}</TextTag>
+          <TextHead align="center">{content.vision.title}</TextHead>
         </SectionHeader>
 
         <ImgWall src="./imgs/w-main-identity1.png" />
-        <TextBody>
-          {`발표, 협상, 연애, 상담, 회의, 교육, 뉴스, SNS, 일상 대화까지—\n모든 말하기의 수준이 한 차원 높아졌습니다.\n우리는 이제, `}
-          <TextHighlight>
-            말할수록 사고가 정제되고, 말할수록 사회가 지능화되는
-          </TextHighlight>
-          {` 환경에 살고 있습니다.`}
-        </TextBody>
+        <TextBody>{content.vision.body1}</TextBody>
         <ImgWall src="./imgs/w-main-identity2.png" />
-        <TextBody>
-          <TextHighlight>inTone</TextHighlight>
-          {`은 단어 선택을넘어, 사고의 구조 자체를 설계할 수 있는 인류 최초의 말하기 인터페이스입니다.\ninTone은 단지 소통을 돕는 도구가 아니라, 사람들이 스스로를 이해하고 정의하는 방식 자체를 바꿨습니다.\n고차원의 소통 사회가 실현된 것입니다.`}
-        </TextBody>
+        <TextBody>{content.vision.body2}</TextBody>
       </Section>
 
       {/* Footstep Section */}
       <Section margin={true} background={true}>
         <SectionHeader>
-          <TextTag>Footstep</TextTag>
-          <TextHead>세상을 바꾼 언어 인터페이스의 등장.</TextHead>
+          <TextTag>{content.footstep.tag}</TextTag>
+          <TextHead>{content.footstep.title}</TextHead>
         </SectionHeader>
 
-        <TextBody>
-          {`우리는 지난 10년간 표현의 가능성을 넓히는 언어 인터페이스라는 새로운 관점을 사회에 제시했습니다.\n그동안 112개국을 거쳐 78억명 사람들이 새로운 사고를 시작했고,\n지금 이 순간에도,`}
-          <AnimatedCounter>30억 1,200만 명</AnimatedCounter>
-          {`이 intone을 통해 말하고 있습니다.`}
-        </TextBody>
+        <TextBody>{content.footstep.body}</TextBody>
 
         <CarouselContainer>
           <StyledSlider {...settings}>
-            {footstepData.map((item, index) => (
+            {content.footstep.cards.map((item, index) => (
               <CarouselItem key={index}>
                 <CarouselText>
                   <TextTag>{item.year}</TextTag>
@@ -312,38 +356,27 @@ export default function History() {
       {/* Impact Section */}
       <Section margin={true}>
         <SectionHeader>
-          <TextTag>Impact</TextTag>
-          <TextHead>각자의 말, 각자의 방식, 각자의 목소리로</TextHead>
+          <TextTag>{content.impact.tag}</TextTag>
+          <TextHead>{content.impact.title}</TextHead>
         </SectionHeader>
 
         <ImpactCardGrid>
-          {impactCards.map((card, idx) => (
+          {content.impact.cards.map((card, idx) => (
             <ImpactCard key={idx}>
               <ImpactCardImage src={card.image} alt={card.text} />
               <ImpactCardOverlay>
-                <TextBody>
-                  <TextHighlight>{card.text.split(" ")[0] + " "}</TextHighlight>
-                  {card.text.split(" ").slice(1).join(" ")}
-                </TextBody>
+                <ImpactCardText>{card.text}</ImpactCardText>
               </ImpactCardOverlay>
             </ImpactCard>
           ))}
         </ImpactCardGrid>
-        <TextBody>{`우리는 이제 서로를 더 잘 이해하고, 각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.`}</TextBody>
+        <TextBody>{content.impact.body}</TextBody>
       </Section>
 
       {/* Outro Section */}
       <Section>
-        <TextHead>
-          {`우리는 더 이상 `}
-          <AlternatingText />
-          {`하지 않습니다.`}
-        </TextHead>
-        <TextSubHead align="center">
-          {`언어는 인류의 고도화된 지능과 진화의 산물이며,\n`}
-          <TextHighlight>inTone</TextHighlight>
-          {`을 통해 모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.\ninTone. A new age of expression.`}
-        </TextSubHead>
+        <TextHead>{content.outro.title}</TextHead>
+        <TextSubHead align="center">{content.outro.subtitle}</TextSubHead>
       </Section>
     </Wrapper>
   );
@@ -468,13 +501,7 @@ const ImpactCardOverlay = styled.div`
 `;
 
 const ImpactCardText = styled.div`
-  width: 100%;
-  color: #fff;
   font-size: 18px;
-  font-weight: 600;
-  text-align: left;
-  line-height: 1.6;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-  width: 100%;
-  word-break: keep-all;
+  font-weight: 700;
+  color: ${({ theme }) => theme.brandColor};
 `;
