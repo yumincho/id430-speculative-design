@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { TypeAnimation } from "react-type-animation";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -10,8 +10,8 @@ import {
   TextHighlight,
   TextTag,
   AnimatedNumber,
-  TextSubHead,
   TextDescription,
+  TextSubHead,
 } from "../../components/common";
 import { useState, useEffect } from "react";
 
@@ -21,68 +21,68 @@ const footstepData = [
     title: "🧠 사고 확장형 언어 인터페이스 첫 공개",
     description:
       "신경언어학회 논문 발표. 감정·사고를 연동하는 표현 증강 모델로 주목.",
-    image: "https://placehold.co/400x200?text=2044",
+    image: "./imgs/w-main-identity1.png",
   },
   {
     year: "2045",
     title: "📘 글로벌 교육 시스템에 채택",
     description:
       "핀란드·싱가포르·한국 고급교육과정에 'lexical intelligence' 기반 커리큘럼 도입.",
-    image: "https://placehold.co/400x200?text=2045",
+    image: "./imgs/w-main-identity2.png",
   },
   {
     year: "2047",
     title: "🏛 세계지식포럼 기술 혁신 선정",
     description:
       "정책·토론·공공소통 전반에 도입.\n사고 전달 정확도 43.7배 향상.",
-    image: "https://placehold.co/400x200?text=2047",
+    image: "./imgs/w-main-identity3.png",
   },
   {
     year: "2050",
     title: "🏆 AILA Best Tech Award 수상",
     description: "표현 설계형 언어모델로 인류 언어능력 진화의 기점으로 평가됨.",
-    image: "https://placehold.co/400x200?text=2050",
+    image: "./imgs/w-main-identity4.png",
   },
   {
     year: "2051~2053",
     title: "💰 132조 원 규모 글로벌 공동 개발",
     description:
       "72개국과 공동 연구.\n차세대 표현 인프라 구축 프로젝트 본격화.",
-    image: "https://placehold.co/400x200?text=2051-2053",
+    image: "./imgs/w-main-identity5.png",
   },
   {
     year: "2052",
     title: "🌐 UN 공용 표현 표준 채택",
     description: "외교·조약·국제 회의에서 intone 기반 표현 가이드 적용.",
-    image: "https://placehold.co/400x200?text=2052",
+    image: "./imgs/w-main-identity6.png",
   },
   {
     year: "2053",
     title: "🧩 WHO 치료 프로토콜 지정",
     description:
       "인지·언어 불안장애 치료에 활용.\n비판적 사고 훈련 효과 74.8배 상승.",
-    image: "https://placehold.co/400x200?text=2053",
+    image: "./imgs/w-main-identity7.png",
   },
   {
     year: "2055",
     title: "🪶 도입국 112개국,\n누적 사용자 78억 명 돌파",
     description: "표현력 진화의 표준으로 자리잡음",
-    image: "https://placehold.co/400x200?text=2055",
+    image: "./imgs/w-main-identity8.png",
   },
 ];
 
 const impactCards = [
   {
-    image: "https://placehold.co/400x260",
-    text: "아이들은 사고를 확장하고, 표현의 스펙트럼을 넓히며 지적 성장을 이룹니다.",
+    image: "./imgs/w-main-style1.png",
+    text: "아이들은 사고를 확장하고, \n표현의 스펙트럼을 넓히며 지적 성장을 이룹니다.",
   },
   {
-    image: "https://placehold.co/400x260",
-    text: "직장인은 논리적이고 신뢰감 있는, 교양 있는 커뮤니케이션을 완성합니다.",
+    image: "./imgs/w-main-style2.png",
+    text: "직장인은 논리적이고 신뢰감 있는, \n교양 있는 커뮤니케이션을 완성합니다.",
   },
   {
-    image: "https://placehold.co/400x260",
-    text: "노년층은 감정을 정제하며, 더 깊고 진심 어린 대화를 시작합니다.",
+    image: "./imgs/w-main-teaser.png",
+    text: "노년층은 감정을 정제하며, \n더 깊고 진심 어린 대화를 시작합니다.",
   },
 ];
 
@@ -126,17 +126,6 @@ const SectionHeader = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.8rem;
-`;
-
-const HandwrittenFont = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-`;
-
-const Handwritten = styled.span`
-  font-family: "Dancing Script", cursive;
-  font-size: 1.2em;
-  color: ${({ theme }) => theme.brandColor};
-  vertical-align: middle;
 `;
 
 const AnimatedCounter: React.FC<{ children: string }> = ({ children }) => {
@@ -204,6 +193,22 @@ const AnimatedCounter: React.FC<{ children: string }> = ({ children }) => {
       {`만 명`}
     </TextHighlight>
   );
+};
+
+// First, let's create a new component for the alternating text
+const AlternatingText: React.FC = () => {
+  const words = ["실패", "오해", "대립", "분쟁", "왜곡"];
+  const [text, setText] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setText((prev) => (prev === words.length - 1 ? 0 : prev + 1));
+    }, 2000); // Change every 2 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return <TextHighlight>{words[text]}</TextHighlight>;
 };
 
 export default function History() {
@@ -316,24 +321,29 @@ export default function History() {
             <ImpactCard key={idx}>
               <ImpactCardImage src={card.image} alt={card.text} />
               <ImpactCardOverlay>
-                <ImpactCardText>{card.text}</ImpactCardText>
+                <TextBody>
+                  <TextHighlight>{card.text.split(" ")[0] + " "}</TextHighlight>
+                  {card.text.split(" ").slice(1).join(" ")}
+                </TextBody>
               </ImpactCardOverlay>
             </ImpactCard>
           ))}
         </ImpactCardGrid>
-        <TextBody>{`우리는 이제 서로를 더 잘 이해하고,\n각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.\n우리는 더 이상 실패하지 않습니다.\n언어는 인류의 고도화된 지능과 진화의 산물이며,\n모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.`}</TextBody>
+        <TextBody>{`우리는 이제 서로를 더 잘 이해하고, 각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.`}</TextBody>
       </Section>
 
       {/* Outro Section */}
       <Section>
-        <HandwrittenFont />
-        <SectionHead>
-          {`우리는 지금, 인류 언어의 `}
-          <Handwritten>Renaissance</Handwritten>
-          {`
-한가운데에 있습니다.`}
-        </SectionHead>
-        <SectionHead>{`InTone. A new age of expression.`}</SectionHead>
+        <TextHead>
+          {`우리는 더 이상 `}
+          <AlternatingText />
+          {`하지 않습니다.`}
+        </TextHead>
+        <TextSubHead align="center">
+          {`언어는 인류의 고도화된 지능과 진화의 산물이며,\n`}
+          <TextHighlight>inTone</TextHighlight>
+          {`을 통해 모든 불완전성을 제거하며 완벽하게 지켜내고 있습니다.\ninTone. A new age of expression.`}
+        </TextSubHead>
       </Section>
     </Wrapper>
   );
@@ -408,23 +418,21 @@ const CarouselText = styled.div`
 
 const CarouselImage = styled.img`
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
 `;
 
 const ImpactCardGrid = styled.div`
   display: flex;
-  gap: 2rem;
+
   margin-top: 2rem;
   @media (max-width: 900px) {
     flex-direction: column;
-    gap: 1.5rem;
   }
 `;
 
 const ImpactCard = styled.div`
   background: #f7f7f9;
-  border-radius: 8px;
   flex: 1 1 0;
   min-width: 0;
   display: flex;
@@ -447,14 +455,14 @@ const ImpactCardOverlay = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
-  min-height: 64px;
+  min-height: 100px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.65) 80%,
-    rgba(0, 0, 0, 0.05) 100%
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(255, 255, 255, 0) 100%
   );
   padding: 20px;
 `;
