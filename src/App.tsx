@@ -10,6 +10,7 @@ import {
   type ThemeMode,
 } from "./components/styles/theme";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Separate ThemeWrapper to use the theme context
 function ThemeWrapper({ mode }: { mode: ThemeMode }) {
@@ -32,6 +33,7 @@ function ThemeWrapper({ mode }: { mode: ThemeMode }) {
     <Router basename={import.meta.env.VITE_BASE_PATH}>
       <div className="App">
         <Navigation />
+        <ScrollToTop />
         <AppRouter />
         <Footer />
       </div>

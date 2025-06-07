@@ -3,6 +3,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useRef } from "react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const mainTeaserImageSrc = "./imgs/w-main-teaser.png";
 const productImageSrc = "./imgs/w-main-product.png";
@@ -313,6 +314,8 @@ export default function Home() {
     },
   });
 
+  const navigate = useNavigate();
+
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -460,7 +463,7 @@ export default function Home() {
           <br />
           inTone과 함께 당신의 개성을 살려보세요
           <br />
-          <ExploreButton>
+          <ExploreButton onClick={() => navigate("/store")}>
             <div>Explore all accessories</div>
             <span style={{ fontSize: "1.2em" }}>&#8250;</span>
           </ExploreButton>
