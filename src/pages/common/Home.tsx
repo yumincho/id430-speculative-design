@@ -67,7 +67,7 @@ const MainImage = styled.img`
   width: 100%;
   height: auto;
   display: block;
-  z-index: 2;
+  z-index: 3;
 `;
 
 const MainTitle = styled.div<{ center?: boolean }>`
@@ -407,6 +407,21 @@ const SlotLines: React.FC = () => {
   );
 };
 
+const XMark = (
+  <img
+    src="./imgs/x-mark.png"
+    alt="x-mark"
+    width="600px"
+    style={{
+      position: "absolute",
+      top: "0",
+      left: "50%",
+      transform: "translate(-15%, -30%)",
+      zIndex: 2,
+    }}
+  />
+);
+
 export default function Home() {
   const navigate = useNavigate();
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -444,6 +459,7 @@ export default function Home() {
     <>
       <FirstSection>
         <ImageWrapper>
+          {!isWhite && XMark}
           <MainHeadline>{contents.mainHeadline}</MainHeadline>
           <MainImage src={mainTeaserImageSrc} alt="inTone main visual" />
         </ImageWrapper>
