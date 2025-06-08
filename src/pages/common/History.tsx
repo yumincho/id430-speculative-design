@@ -134,20 +134,36 @@ const footstepData = {
   ],
 };
 
-const impactCards = [
-  {
-    image: "./imgs/w-history-impact1.png",
-    text: "아이들은 사고를 확장하고, \n표현의 스펙트럼을 넓히며 지적 성장을 이룹니다.",
-  },
-  {
-    image: "./imgs/w-main-style2.png",
-    text: "직장인은 논리적이고 신뢰감 있는, \n교양 있는 커뮤니케이션을 완성합니다.",
-  },
-  {
-    image: "./imgs/w-main-teaser.png",
-    text: "노년층은 감정을 정제하며, \n더 깊고 진심 어린 대화를 시작합니다.",
-  },
-];
+const impactCards = {
+  white: [
+    {
+      image: "./imgs/w-history-impact1.png",
+      text: "아이들은 사고를 확장하고, \n표현의 스펙트럼을 넓히며 지적 성장을 이룹니다.",
+    },
+    {
+      image: "./imgs/w-main-style2.png",
+      text: "직장인은 논리적이고 신뢰감 있는, \n교양 있는 커뮤니케이션을 완성합니다.",
+    },
+    {
+      image: "./imgs/w-main-teaser.png",
+      text: "노년층은 감정을 정제하며, \n더 깊고 진심 어린 대화를 시작합니다.",
+    },
+  ],
+  dark: [
+    {
+      image: "",
+      text: "아이들의 사고를 제한하고, 표현을 통제하며 사회적 단일화를 이룹니다.",
+    },
+    {
+      image: "",
+      text: "직장인은 AI와 회사의 통제를, 감시를, 검열을 거부할 수 없습니다.",
+    },
+    {
+      image: "",
+      text: "노년층은 AI와 기계의 제어권을 잃고 자신의 언어를 더 쉽고 빠르게 잃습니다.",
+    },
+  ],
+};
 
 const introGifList = [
   "./videos/w-history-intro-1.gif",
@@ -253,7 +269,7 @@ const allContents = {
     impact: {
       tag: "Symptom",
       title: "각자의 말은 사라지고,\n각자의 침묵만 남았습니다.",
-      cards: impactCards,
+      cards: impactCards.dark,
       body: `우리는 이제 서로를 오해하지 않지만,\n서로의 진심을 들을 수 없습니다.\n각자의 생각은 통역기의 필터를 통과하며,\n서로의 '패턴'만을 이해하게 되었습니다.`,
     },
     outro: {
@@ -281,7 +297,7 @@ const allContents = {
     impact: {
       tag: "Impact",
       title: "각자의 말, 각자의 방식, 각자의 목소리로",
-      cards: impactCards,
+      cards: impactCards.white,
       body: `우리는 이제 서로를 더 잘 이해하고, 각자의 방식으로 연결되며,\n각자의 생각을 더 온전하게 전달할 수 있게 되었습니다.`,
     },
     outro: {
