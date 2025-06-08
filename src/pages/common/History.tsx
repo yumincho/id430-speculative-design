@@ -86,6 +86,18 @@ const impactCards = [
   },
 ];
 
+const introGifList = [
+  "./videos/w-history-intro-1.gif",
+  "./videos/w-history-intro-2.gif",
+  "./videos/w-history-intro-3.gif",
+];
+
+const introGifListDark = [
+  "./videos/d-history-intro-1.gif",
+  "./videos/d-history-intro-2.gif",
+  "./videos/d-history-intro-3.gif",
+];
+
 const Wrapper = styled.div`
   & > *:first-child {
     min-height: calc(100vh - 200px); // 원하는 height
@@ -110,6 +122,7 @@ const Section = styled.div<{ margin?: boolean; background?: boolean }>`
   justify-content: center;
   align-items: center;
   gap: 4rem;
+  position: relative;
 
   @media (max-width: 800px) {
     max-width: 98vw;
@@ -127,89 +140,6 @@ const SectionHeader = styled.div`
   align-items: center;
   gap: 0.8rem;
 `;
-
-// const AnimatedCounter: React.FC<{ children: string }> = ({ children }) => {
-//   // Parse the initial value to separate numbers and units
-//   const parseValue = (value: string) => {
-//     const match = value.match(/(\d+)억\s*(\d+)만\s*명/);
-//     if (!match) return { billions: 30, millions: 1200 };
-//     return {
-//       billions: parseInt(match[1]),
-//       millions: parseInt(match[2].replace(/,/g, "")),
-//     };
-//   };
-
-//   const [values, setValues] = useState(parseValue(children));
-//   const [isAnimatingBillions, setIsAnimatingBillions] = useState(false);
-//   const [isAnimatingMillions, setIsAnimatingMillions] = useState(false);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       // Animate billions
-//       setIsAnimatingBillions(true);
-//       setTimeout(() => {
-//         setValues((prev) => ({
-//           ...prev,
-//           billions: Math.floor(Math.random() * 10) + 30,
-//         }));
-//         setIsAnimatingBillions(false);
-//       }, 300);
-
-//       // Animate millions with a slight delay
-//       setTimeout(() => {
-//         setIsAnimatingMillions(true);
-//         setTimeout(() => {
-//           setValues((prev) => ({
-//             ...prev,
-//             millions: Math.floor(Math.random() * 10000),
-//           }));
-//           setIsAnimatingMillions(false);
-//         }, 300);
-//       }, 150);
-//     }, 3000);
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <TextHighlight>
-//       <AnimatedNumber
-//         style={{
-//           animation: isAnimatingBillions ? "none" : undefined,
-//           width: "26px",
-//         }}
-//       >
-//         {values.billions}
-//       </AnimatedNumber>
-//       {`억 `}
-//       <AnimatedNumber
-//         style={{
-//           animation: isAnimatingMillions ? "none" : undefined,
-//           width: "58px",
-//         }}
-//       >
-//         {values.millions.toLocaleString()}
-//       </AnimatedNumber>
-//       {`만 명`}
-//     </TextHighlight>
-//   );
-// };
-
-// // First, let's create a new component for the alternating text
-// const AlternatingText: React.FC = () => {
-//   const words = ["실패", "오해", "대립", "분쟁", "왜곡"];
-//   const [text, setText] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setText((prev) => (prev === words.length - 1 ? 0 : prev + 1));
-//     }, 2000); // Change every 2 seconds
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return <TextHighlight>{words[text]}</TextHighlight>;
-// };
 
 const allContents = {
   dark: {
@@ -302,6 +232,38 @@ export default function History() {
     <Wrapper>
       {/* Intro Section */}
       <Section>
+        <div 
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 0,
+          display: "flex",
+
+        }} >
+          { isWhite ? 
+          introGifList.map((gif, idx) => (
+            <img key={idx} src={gif} alt="history intro" width="35%" style={{objectFit: "cover"}}/>
+          )) :
+          introGifListDark.map((gif, idx) => (
+            <img key={idx} src={gif} alt="history intro" width="35%" style={{objectFit: "cover"}}/>
+          ))}
+        </div>
+        <div 
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 1,
+          display: "flex",
+          background: "rgba(0, 0, 0, 0.3)",
+        }} 
+        />
         <SectionHead>
           <TypeAnimation
             sequence={[1000, content.intro.title, 1000]}
@@ -309,6 +271,10 @@ export default function History() {
             speed={30}
             cursor={true}
             repeat={0}
+            style={{
+              zIndex: 10,
+              color: "white",
+            }}
           />
         </SectionHead>
       </Section>
@@ -397,6 +363,7 @@ const SectionHead = styled.div`
   line-height: 1.2;
   text-align: center;
   min-height: 140px; /* Added to prevent layout shift during typing */
+  z-index: 10;
 `;
 
 const CarouselContainer = styled.div`
