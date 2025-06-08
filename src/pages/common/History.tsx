@@ -270,7 +270,7 @@ const allContents = {
 
 export default function History() {
   const theme = useTheme();
-  // const isWhite = theme.mode === "white";
+  const isWhite = theme.mode === "white";
   const content = allContents[theme.mode];
 
   const settings = {
@@ -322,10 +322,15 @@ export default function History() {
 
         <ImgWall
           style={{ objectPosition: "top" }}
-          src="./imgs/w-history-v1.png"
+          height={500}
+          src={isWhite ? "./imgs/w-history-v1.png" : "./imgs/d-history-v1.png"}
         />
         <TextBody>{content.vision.body1}</TextBody>
-        <ImgWall src="./imgs/w-main-identity2.png" />
+        <ImgWall
+          style={{ objectPosition: "top" }}
+          height={500}
+          src={isWhite ? "./imgs/w-history-v2.png" : "./imgs/d-history-v2.png"}
+        />
         <TextBody>{content.vision.body2}</TextBody>
       </Section>
 
