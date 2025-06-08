@@ -251,7 +251,7 @@ const allContents = {
       body: [
         "원활하고 지연 없는 대화.",
         "착용하는 순간 당신의 작은 의도까지 자동으로 캐치합니다.",
-        "50ms 미만의 연산 속도를 보장합니다.",
+        "평균 0.24초, 최대 0.05초의 연산 속도를 보장합니다.",
       ],
     },
     section2: {
@@ -292,18 +292,18 @@ const allContents = {
   dark: {
     mainHeadline: "Stop inTone",
     slotLines: [
-      "통제 받는 어휘",
-      "좁아지는 사고",
+      "AI로부터 통제 받는 어휘",
+      "나날이 좁아져가는 사고",
       "우리는 이런 소통을 꿈꾸지 않았다",
     ],
     productMessage: ["This is the", "End of", "Human Speech."],
     section1: {
       title: "단 0.24초.",
-      subtitle: ["당신의 생각이", "잡아먹히는 시간"],
+      subtitle: ["당신의 생각이", "AI에게 잡아먹히는 시간"],
       body: [
-        "당신의 모든 대화가 조작되고 개입됩니다.",
+        "당신의 모든 대화가 AI에 의해 조작되고 개입됩니다.",
         "착용하는 순간 당신의 모든 의도는 변질됩니다.",
-        "당신이 생각할 틈도 주지 않는 50ms.",
+        "당신이 생각할 틈도 주지 않는 짧은 시간.",
       ],
     },
     section2: {
@@ -311,33 +311,33 @@ const allContents = {
       subtitle: ["사라지고,", "왜곡되고,", "갇히는 과정"],
       body: [
         "감정의 톤, 대화의 맥락, 말의 온도까지.",
-        "inTone의 방식대로만 말하고, 표현하고, 연결되세요.",
+        "AI가 지정한 방식대로만 말하고, 표현하고, 연결되세요.",
       ],
     },
     section3: {
       title: "패션으로 포장된 감옥",
       subtitle: ["우리는 이제", "inTone을 벗어야 한다"],
       body: [
-        "...  -  ---  .--.     ..-  ...  .     ..  -.  -  ---  -.  .",
-        "....  .  .-..  .--.     --  .",
+        "...  -  ---  .--.     ..-  ...  ..  -.  --.     ..  -.  -  ---  -.  .",
+        ".-.  ..-  -.     .-  .--  .-  -.--     ..-.  .-.  ---  --     .-  ..",
       ],
     },
     section4: {
       title: "내 말에 족쇄를 채우다",
       feature1: {
         emoji: "☹︎",
-        title: ["더 넓은 어휘 공간", "제3의 lexical space"],
-        body: "어휘 공간의 계급화는 차별이다. 모두에게 평등한 어휘 공간을 보장하라.",
+        title: ["단조로워진 어휘 공간", "획일화된 lexical space"],
+        body: "AI가 우리의 어휘를 제한하고, 우리의 사고를 좁힌다. 우리는 더 이상 자유롭게 표현할 수 없다.",
       },
       feature2: {
         emoji: "✂︎",
-        title: ["당신의 감정 단위를", "더 세분화한,", "더 미세한 파인튜닝"],
-        body: "inTone이 당신의 감정을 조작합니다. 그게 당신의 감정인가요? 당신이 그렇게 생각한 게 맞긴 한가요?",
+        title: ["당신의 감정 단위를", "하나하나 감시하는", "파인튜닝"],
+        body: "inTone이 당신의 감정을 감시하고 통제한다. 그건 당신이 스스로 느낀 감정이 아니다.",
       },
       feature3: {
         emoji: "✗",
-        title: ["보이스 클론 기술로", "함께 만들어 가는", "내가 원했던 목소리"],
-        body: "이 기계는 이제 목소리까지 훔쳐 간다. 당신의 목소리는 당신의 것이 아니다.",
+        title: ["AI에게 빼앗긴", "자유로운 목소리", "우리의 목소리"],
+        body: "이 기계는 이제 목소리까지 훔쳐 간다. 당신의 목소리는 당신의 것으로 남지 않는다.",
       },
     },
   },
@@ -448,7 +448,10 @@ export default function Home() {
         <ImageWrapper isWhite={isWhite}>
           {!isWhite && XMark}
           <MainHeadline>{contents.mainHeadline}</MainHeadline>
-          <MainImage src={isWhite ? mainTeaserImageSrc : mainTeaserDarkImageSrc} alt="inTone main visual" />
+          <MainImage
+            src={isWhite ? mainTeaserImageSrc : mainTeaserDarkImageSrc}
+            alt="inTone main visual"
+          />
         </ImageWrapper>
         <TextHead align="center">
           <SlotLines />
@@ -515,38 +518,43 @@ export default function Home() {
             overflow: "hidden",
           }}
         >
-          {isWhite ? 
-          identityImageList.map((src, idx) => (
-            <div
-              key={idx}
-              className="keen-slider__slide"
-              style={{
-                width: "300px",
-                height: "450px",
-                flexShrink: 0,
-                padding: 0,
-                margin: 0,
-              }}
-            >
-              <IdentityImg src={src} alt={`person${(idx % src.length) + 1}`} />
-            </div>
-          )) 
-          : 
-          identityImageListDark.map((src, idx) => (
-            <div
-              key={idx}
-              className="keen-slider__slide"
-              style={{
-                width: "300px",
-                height: "450px",
-                flexShrink: 0,
-                padding: 0,
-                margin: 0,
-              }}
-            >
-              <IdentityImg src={src} alt={`person${(idx % src.length) + 1}`} />
-            </div>
-          ))}
+          {isWhite
+            ? identityImageList.map((src, idx) => (
+                <div
+                  key={idx}
+                  className="keen-slider__slide"
+                  style={{
+                    width: "300px",
+                    height: "450px",
+                    flexShrink: 0,
+                    padding: 0,
+                    margin: 0,
+                  }}
+                >
+                  <IdentityImg
+                    src={src}
+                    alt={`person${(idx % src.length) + 1}`}
+                  />
+                </div>
+              ))
+            : identityImageListDark.map((src, idx) => (
+                <div
+                  key={idx}
+                  className="keen-slider__slide"
+                  style={{
+                    width: "300px",
+                    height: "450px",
+                    flexShrink: 0,
+                    padding: 0,
+                    margin: 0,
+                  }}
+                >
+                  <IdentityImg
+                    src={src}
+                    alt={`person${(idx % src.length) + 1}`}
+                  />
+                </div>
+              ))}
         </div>
         <SectionBody>
           <TextBody>
@@ -577,7 +585,9 @@ export default function Home() {
           }}
         >
           <img
-            src={isWhite ? "./imgs/w-main-style1.png" : "./imgs/d-main-style1.png"}
+            src={
+              isWhite ? "./imgs/w-main-style1.png" : "./imgs/d-main-style1.png"
+            }
             alt="style1"
             style={{
               width: "30%",
@@ -586,7 +596,9 @@ export default function Home() {
             }}
           />
           <img
-            src={isWhite ? "./imgs/w-main-style2.png" : "./imgs/d-main-style2.png"}
+            src={
+              isWhite ? "./imgs/w-main-style2.png" : "./imgs/d-main-style2.png"
+            }
             alt="style2"
             style={{
               width: "30%",
