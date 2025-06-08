@@ -448,9 +448,7 @@ export default function History() {
           {contents.impact.cards.map((card, idx) => (
             <ImpactCard key={idx}>
               <ImpactCardImage src={card.image} alt={card.text} />
-              <ImpactCardOverlay>
-                <ImpactCardText>{card.text}</ImpactCardText>
-              </ImpactCardOverlay>
+              <ImpactCardText>{card.text}</ImpactCardText>
             </ImpactCard>
           ))}
         </ImpactCardGrid>
@@ -561,43 +559,39 @@ const ImpactCardGrid = styled.div`
 `;
 
 const ImpactCard = styled.div`
-  background: #f7f7f9;
+  position: relative;
+  background: ${({ theme }) => theme.background};
   flex: 1 1 0;
   min-width: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-start;
   overflow: hidden;
   position: relative;
+  height: 400px;
+  box-sizing: border-box;
 `;
 
 const ImpactCardImage = styled.img`
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
+  position: absolute;
   object-fit: cover;
   display: block;
-`;
-
-const ImpactCardOverlay = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  min-height: 100px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.6) 60%,
-    rgba(255, 255, 255, 0) 100%
+  ${({ theme }) => `
+    mask-image: linear-gradient(
+    to bottom,
+    ${theme.backgroundReverse}FF,
+    ${theme.backgroundReverse}FF,
+    rgba(0, 0, 0, 0)
   );
-  padding: 20px;
+  `}
 `;
 
 const ImpactCardText = styled.div`
   font-size: 18px;
   font-weight: 700;
   color: ${({ theme }) => theme.brandColor};
+  position: relative;
+  padding: 16px;
 `;
