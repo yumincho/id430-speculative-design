@@ -9,7 +9,7 @@ import {
 export const article1 = (
   <ArticleWrapper>
     <Text>
-      <i>기자 알렉스 모건 / 2051.06.02</i>
+      <i>- 기자 알렉스 모건 | 2051.06.02</i>
     </Text>
     <Text>
       AI 통역기 inTone은 사용자의 말투와 정서를 정제해 전달력을 높여준다는
