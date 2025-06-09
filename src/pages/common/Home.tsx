@@ -46,7 +46,7 @@ const FirstSection = styled.section`
 
 const ImageWrapper = styled.div<{ isWhite?: boolean }>`
   position: relative;
-  width: ${({ isWhite }) => (isWhite ? "420px" : "600px")};
+  width: ${({ isWhite }) => (isWhite ? "400px" : "570px")};
   max-width: 90vw;
   margin: 2.5rem 0;
 `;
@@ -79,6 +79,7 @@ const MainImage = styled.img`
 const ProductSection = styled.section`
   width: 100%;
   min-height: 100vh;
+  margin: 10rem 0;
 
   display: flex;
   flex-direction: column;
@@ -89,7 +90,6 @@ const ProductSection = styled.section`
 
 const SectionContainer = styled.section`
   width: 100%;
-  height: 100vh;
   margin: 10rem 0;
 
   min-height: 600px;
@@ -590,7 +590,7 @@ export default function Home() {
             }
             alt="style1"
             style={{
-              width: "30%",
+              width: "440px",
               height: "auto",
               objectFit: "cover",
             }}
@@ -601,7 +601,7 @@ export default function Home() {
             }
             alt="style2"
             style={{
-              width: "30%",
+              width: "440px",
               height: "auto",
               objectFit: "cover",
             }}
