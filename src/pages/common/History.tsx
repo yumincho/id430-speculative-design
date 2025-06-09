@@ -138,29 +138,29 @@ const impactCards = {
   white: [
     {
       image: "./imgs/w-history-impact1.png",
-      text: "아이들은 사고를 확장하고, \n표현의 스펙트럼을 넓히며 지적 성장을 이룹니다.",
+      text: "**아이들은** 사고를 확장하고, \n표현의 스펙트럼을 넓히며\n지적 성장을 이룹니다.",
     },
     {
       image: "./imgs/w-main-style2.png",
-      text: "직장인은 논리적이고 신뢰감 있는, \n교양 있는 커뮤니케이션을 완성합니다.",
+      text: "**직장인은** 논리적이고 신뢰감 있는, \n교양 있는 커뮤니케이션을 완성합니다.",
     },
     {
       image: "./imgs/w-main-teaser.png",
-      text: "노년층은 감정을 정제하며, \n더 깊고 진심 어린 대화를 시작합니다.",
+      text: "**노년층은** 감정을 정제하며, \n더 깊고 진심 어린 대화를 시작합니다.",
     },
   ],
   dark: [
     {
-      image: "",
-      text: "아이들의 사고를 제한하고, 표현을 통제하며 사회적 단일화를 이룹니다.",
+      image: "./imgs/w-history-impact1.png",
+      text: "**아이들은** 더는 스스로 문장을 만들지 않습니다. \n사고는 시스템이 설계하고,\n표현을 통제하며 사회적 단일화를 이룹니다.",
     },
     {
-      image: "",
-      text: "직장인은 AI와 회사의 통제를, 감시를, 검열을 거부할 수 없습니다.",
+      image: "./imgs/w-history-impact1.png",
+      text: "**직장인은** AI와 회사의 통제를,\n감시를, 검열을 거부할 수 없습니다.\n허용된 말만이 교양이 되었고,\n이견은 부적절함으로 분류됩니다.",
     },
     {
-      image: "",
-      text: "노년층은 AI와 기계의 제어권을 잃고 자신의 언어를 더 쉽고 빠르게 잃습니다.",
+      image: "./imgs/w-history-impact1.png",
+      text: "**노년층은** 이제 기억대로 말하지 못합니다.\nAI와 기계의 제어권을 잃고,\n자신의 언어를 더 빠르게 잃습니다.",
     },
   ],
 };
@@ -464,7 +464,9 @@ export default function History() {
           {contents.impact.cards.map((card, idx) => (
             <ImpactCard key={idx}>
               <ImpactCardImage src={card.image} alt={card.text} />
-              <ImpactCardText>{card.text}</ImpactCardText>
+              <ImpactCardText>
+                <TextwithHighlight text={card.text} />
+              </ImpactCardText>
             </ImpactCard>
           ))}
         </ImpactCardGrid>
@@ -566,6 +568,7 @@ const CarouselImage = styled.img`
 `;
 
 const ImpactCardGrid = styled.div`
+  width: 100%;
   display: flex;
 
   margin-top: 2rem;
@@ -607,7 +610,10 @@ const ImpactCardImage = styled.img`
 const ImpactCardText = styled.div`
   font-size: 18px;
   font-weight: 700;
-  color: ${({ theme }) => theme.brandColor};
+  color: ${({ theme }) => theme.text};
   position: relative;
   padding: 16px;
+
+  white-space: pre-wrap;
+  opacity: 0.8;
 `;
