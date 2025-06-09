@@ -4,8 +4,15 @@ import {
   getWhiteArticleById,
 } from "../../data/articlesData";
 import Markdown from "react-markdown";
-import { useTheme } from "styled-components";
-import { H1 } from "../../components/common";
+import styled, { useTheme } from "styled-components";
+import { H1, InfoBox, Strong, Text } from "../../components/common";
+
+const AiSummaryBox = styled(InfoBox)`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 2rem 0;
+`;
 
 export default function Article() {
   const theme = useTheme();
@@ -52,7 +59,14 @@ export default function Article() {
         alt={article.title}
         style={{ width: "100%", height: "400px", objectFit: "cover" }}
       />
-      <p style={{ fontSize: "14px", color: theme.text }}>{article.summary}</p>
+      {article.aiSummary && (
+        <AiSummaryBox style={{ fontSize: "14px", color: theme.text }}>
+          <Text>
+            <Strong>🤖 AI Summary</Strong>
+          </Text>
+          <Text>{article.aiSummary}</Text>
+        </AiSummaryBox>
+      )}
       {articleContent}
     </div>
   );

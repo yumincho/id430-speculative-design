@@ -13,25 +13,22 @@ export const InfoBox = styled.div`
   color: ${({ theme }) => theme.text};
 `;
 
-export const Quote = styled.blockquote`
+export const Text = styled.div`
+  color: ${({ theme }) => theme.text};
+  font-size: 17px;
+  line-height: 1.5;
+`;
+
+export const Quote = styled(Text)`
   border-left: 4px solid #ccc;
   padding-left: 1rem;
   margin: 1rem 0;
   font-style: italic;
-  font-size: 14px;
   color: ${({ theme }) => theme.quote};
 `;
 
-export const Text = styled.div`
-  color: ${({ theme }) => theme.text};
-  font-size: 14px;
-  line-height: 1.5;
-`;
-
-export const TextReverse = styled.div`
+export const TextReverse = styled(Text)`
   color: ${({ theme }) => theme.textReverse};
-  font-size: 14px;
-  line-height: 1.5;
 `;
 
 export const Strong = styled.strong`
