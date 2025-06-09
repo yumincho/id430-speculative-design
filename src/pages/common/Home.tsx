@@ -171,6 +171,7 @@ const FeatureContent = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: #f3f3f3;
+  opacity: ${({ theme }) => (theme.mode === "white" ? "1" : "0.5")};
 `;
 
 const FeatureGrid = styled.div`
