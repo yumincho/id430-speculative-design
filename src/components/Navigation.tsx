@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.div`
@@ -24,14 +24,15 @@ const NavItem = styled.div`
   cursor: pointer;
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled(Link)<{ $isActive: boolean }>`
   text-decoration: none;
   color: ${({ theme }) => theme.text};
   font-weight: 600;
   font-size: 1.13rem;
   letter-spacing: 0.01em;
   transition: color 0.18s, border-bottom 0.18s;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid ${({ $isActive, theme }) => 
+    $isActive ? theme.text : 'transparent'};
   cursor: pointer;
 
   &:hover {
@@ -42,20 +43,29 @@ const NavLink = styled(Link)`
 `;
 
 export default function Navigation() {
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    if (path === '/home') {
+      return location.pathname === '/home' || location.pathname === '/';
+    }
+    return location.pathname.includes(path);
+  };
+
   return (
     <Nav>
       <NavList>
         <NavItem>
-          <NavLink to={"/home"}>inTone</NavLink>
+          <NavLink to={"/home"} $isActive={isActive('/home')}>inTone</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to={"store"}>Store</NavLink>
+          <NavLink to={"store"} $isActive={isActive('store')}>Store</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to={"history"}>Brand History</NavLink>
+          <NavLink to={"history"} $isActive={isActive('history')}>Brand History</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to={"stories"}>Stories</NavLink>
+          <NavLink to={"stories"} $isActive={isActive('stories')}>Stories</NavLink>
         </NavItem>
       </NavList>
     </Nav>
