@@ -383,7 +383,7 @@ export default function History() {
             left: 0,
             zIndex: 1,
             display: "flex",
-            background: "rgba(0, 0, 0, 0.3)",
+            background: isDark ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.3)",
           }}
         />
         <SectionHead>

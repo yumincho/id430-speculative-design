@@ -11,7 +11,14 @@ const AiSummaryBox = styled(InfoBox)`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
+`;
+
+const ThumbnailImg = styled.img`
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  margin-bottom: 2rem;
 `;
 
 export default function Article() {
@@ -54,11 +61,7 @@ export default function Article() {
       }}
     >
       <H1>{article.title}</H1>
-      <img
-        src={`../${article.imageUrl}`}
-        alt={article.title}
-        style={{ width: "100%", height: "400px", objectFit: "cover" }}
-      />
+      <ThumbnailImg src={`../${article.imageUrl}`} alt={article.title} />
       {article.aiSummary && (
         <AiSummaryBox style={{ fontSize: "14px", color: theme.text }}>
           <Text>
