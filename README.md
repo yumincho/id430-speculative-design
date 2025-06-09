@@ -1,54 +1,31 @@
-# React + TypeScript + Vite
+# Project: inTone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Speculaltive design @ ID KAIST, 2025 Spring, by Team 졸업레츠고 (Hyewon Lee, Ihchae Ryu, Yumin Cho).
 
-Currently, two official plugins are available:
+## 🎙️ inTone: 더 이상 스스로 말할 필요 없는 시대
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**inTone**은 모든 발화를 AI가 매개하는 미래를 상상하는 프로젝트입니다. 사람들은 이제 자신의 감정이나 사고를 직접 표현하지 않고, AI가 대신 정제하고 전달해주는 언어 인터페이스 <AI 통역기>에 의존합니다. 이 인터페이스가 정의한 <고급언어>는 점차 표준이 되어, 신인류의 기본 소양이자 매너가 되었고, 사람들은 점점 덜 사고하고, 말하기의 주체로서 자신을 상실해갑니다. 프로젝트는 언어가 더는 순수한 자아 표현의 도구가 아니라, AI의 규칙과 알고리즘에 의해 구성되는 구조물로 변화한 세계를 보여줍니다. 실제 제품 사이트처럼 구성된 **inTone**의 세계관은 화이트웹(공식 서사)과 다크웹(저항의 서사)으로 이중 구조를 띠며, 언어 주권 상실에 대한 문제의식을 제기합니다.
 
-## Expanding the ESLint configuration
+# How to Start
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+SPA 어플리케이션을 GitHub pages로 배포하기 위해, `.env.example`의 `base`를 사용합니다.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```shell
+cp .env.example .env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+빌드 때에는 `base`가 필요하지 않으므로 값을 할당하지 않은 변수를 사용합니다.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```shell
+echo "VITE_SOME_OTHER_KEY=" >> .env.production
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+`npm` 또는 `pnpm`으로 필요한 패키지를 설치하고 실행할 수 있습니다.
+
+```shell
+pnpm install
+```
+
+```shell
+pnpm dev
 ```
