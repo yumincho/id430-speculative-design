@@ -321,7 +321,7 @@ export default function History() {
     slidesToScroll: 2,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false,
+    arrows: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -446,7 +446,7 @@ export default function History() {
                     {item.description}
                   </TextDescription>
                 </CarouselText>
-                <CarouselImage src={item.image} alt={item.title} />
+                {/* <CarouselImage src={item.image} alt={item.title} /> */}
               </CarouselItem>
             ))}
           </StyledSlider>
@@ -498,6 +498,7 @@ const SectionHead = styled.div`
 
 const CarouselContainer = styled.div`
   width: 100%;
+  background: ${({ theme }) => theme.backgroundSecondary};
   margin-bottom: 2rem;
 `;
 
@@ -534,7 +535,8 @@ const CarouselItem = styled.div`
   align-items: stretch;
   background: ${({ theme }) => theme.background};
 
-  height: 400px;
+  min-height: 250px;
+  /* border-radius: 2rem; */
 
   overflow: hidden;
   position: relative;
@@ -559,12 +561,6 @@ const CarouselText = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0.3rem;
-`;
-
-const CarouselImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
 `;
 
 const ImpactCardGrid = styled.div`
