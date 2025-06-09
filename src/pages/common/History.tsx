@@ -141,11 +141,11 @@ const impactCards = {
       text: "**아이들은** 사고를 확장하고, \n표현의 스펙트럼을 넓히며\n지적 성장을 이룹니다.",
     },
     {
-      image: "./imgs/w-main-style2.png",
+      image: "./imgs/w-history-impact2.png",
       text: "**직장인은** 논리적이고 신뢰감 있는, \n교양 있는 커뮤니케이션을 완성합니다.",
     },
     {
-      image: "./imgs/w-main-teaser.png",
+      image: "./imgs/w-history-impact3.png",
       text: "**노년층은** 감정을 정제하며, \n더 깊고 진심 어린 대화를 시작합니다.",
     },
   ],
@@ -155,11 +155,11 @@ const impactCards = {
       text: "**아이들은** 더는 스스로 문장을 만들지 않습니다. \n사고는 시스템이 설계하고,\n표현을 통제하며 사회적 단일화를 이룹니다.",
     },
     {
-      image: "./imgs/w-history-impact1.png",
+      image: "./imgs/w-history-impact2.png",
       text: "**직장인은** AI와 회사의 통제를,\n감시를, 검열을 거부할 수 없습니다.\n허용된 말만이 교양이 되었고,\n이견은 부적절함으로 분류됩니다.",
     },
     {
-      image: "./imgs/w-history-impact1.png",
+      image: "./imgs/w-history-impact3.png",
       text: "**노년층은** 이제 기억대로 말하지 못합니다.\nAI와 기계의 제어권을 잃고,\n자신의 언어를 더 빠르게 잃습니다.",
     },
   ],
