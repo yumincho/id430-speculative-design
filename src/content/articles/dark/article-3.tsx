@@ -7,6 +7,10 @@ import {
 
 export const article3 = (
   <ArticleWrapper>
+    <Text>
+      <i>- 강지수 사설칼럼 | 한국과학기술원 인문사회학부 교수</i>
+    </Text>
+    <br />
     <Strong>
       누군가는 요즘, 말하기 전에 충전부터 한다.
     </Strong>
